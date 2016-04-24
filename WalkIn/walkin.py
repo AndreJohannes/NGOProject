@@ -26,5 +26,5 @@ for i in range(0,48):
 	base2.paste((0,256),(100, 0, 1380, 720), image_mirror.convert("RGBA"))
 	base1 = base1.convert("RGBA");
 	base2 = base2.convert("RGBA");
-	base1.save("../Movie/image"+ str(ioffset+2*i) +".png")
-	base2.save("../Movie/image"+ str(ioffset+2*i+1) +".png")
+	base1.save("../Movie/image" + str(ioffset+2*i) +".png")
+	base2.save("../Movie/image" + str(ioffset+2*i+1) +".png")
