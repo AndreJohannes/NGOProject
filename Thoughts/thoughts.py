@@ -55,7 +55,8 @@ class TimedBubble:
 
 	def inc(self):
 		self.counter += 1
-		self.flipFlop.inc()
+		if(self.counter>self.startTime):
+			self.flipFlop.inc()
 
 	def draw(self,im):
 		if self.counter < self.startTime or self.counter > self.stopTime:
@@ -104,28 +105,41 @@ class MorphingTextBox:
 	def inc(self):
 		self.counter += 1
 
+class OneThought:
+
+	def __init__(self, startTime):
+		self.bubble1 = TimedBubble(380,358,10,startTime,startTime+105,30,5)
+		self.bubble2 = TimedBubble(380,318,15,startTime,startTime+105,20,15)
+		self.bubble3 = TimedBubble(380,268,20,startTime,startTime+105,10,25)
+		self.rectangualar = MorphingTextBox(380,268,20,startTime+105)
+
+	def inc(self):
+		self.bubble1.inc()
+		self.bubble2.inc()
+		self.bubble3.inc()
+		self.rectangualar.inc()
+
+	def draw(self, im):
+		self.bubble1.draw(im)
+		self.bubble2.draw(im)
+		self.bubble3.draw(im)
+		self.rectangualar.draw(im)		
 
 base = Image.open("./base.png")
 
 iOffset = 0
-bubble1 = TimedBubble(380,358,10,0,105,30,5)
-bubble2 = TimedBubble(380,318,15,0,105,20,15)
-bubble3 = TimedBubble(380,268,20,0,105,10,25)
-rectangualar = MorphingTextBox(380,268,20,105)
+firstThought = OneThought(0)
+secondThought = OneThought(120)
 
 for i in range(0,350):
 	im = Image.new("RGBA",(1280,720),"white")
 	im.paste(base,(0,0))
-	bubble1.draw(im)
-	bubble2.draw(im)
-	bubble3.draw(im)
-	rectangualar.draw(im)
+	firstThought.draw(im)
+	secondThought.draw(im)
 	d = ImageDraw.Draw(im)
 	d.text((0,0),str(i+iOffset),"black")
-	bubble1.inc()
-	bubble2.inc()
-	bubble3.inc()
-	rectangualar.inc()
+	firstThought.inc()
+	secondThought.inc()
 	print "saving image:" , i 
 	im.save("./images/image" + str(i+iOffset) + ".png","png")
 
