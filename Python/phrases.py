@@ -243,3 +243,17 @@ class Phrases:
 		d.flush()
 		d.flush()
 		return image
+
+	@staticmethod
+	def getPhrase22():
+		image = Image.new("L",(260,175),"black")
+		d = aggdraw.Draw(image)
+		font = aggdraw.Font("white", "font1.ttf",36)
+		d.text((10, 0), "But what are people like", font)
+		d.text((50,35), "on the other side?", font)
+		d.text((10,65), "Difference seperates us, but", font)
+		d.text((10,95), "it also makes us stronger, ", font)
+		d.text((170,125), "doesnt it?", font)
+		d.flush()
+		d.flush()
+		return image

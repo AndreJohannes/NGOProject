@@ -3,47 +3,11 @@ from PIL import ImageDraw
 import aggdraw
 import math
 import random
-from phrases import Phrases
-from flags import Flags
-import tools as Tools
+from Python.phrases import Phrases
+from Python.flags import Flags
+import Python.tools as Tools
 
-class TranscendingBubble:
 
-	def __init__(self, image, pos_x, pos_y, radius, startTime):
-		self.pos_x = pos_x
-		self.pos_y = pos_y
-		self.radius = radius 
-		self.startTime = startTime
-		self.counter = 0
-		self.image = image
-
-	def inc(self):
-		self.counter += 1
-
-	def draw(self, im):
-		if(self.counter < self.startTime):
-			return
-		dt = self.counter - self.startTime
-		radius = self.radius + 10 * dt
-		mask = self.getMask(self.pos_x, self.pos_y, radius)
-		im.paste(self.image, (0,0,1280,720), mask)
-		d = aggdraw.Draw(im)
-		p = aggdraw.Pen("black", 2.5)
-		#b = aggdraw.Brush("white")
-		radius = self.radius + 10 * dt
-		d.ellipse((self.pos_x - radius, self.pos_y - radius, 
-			self.pos_x + radius,self.pos_y + radius), p)
-		d.flush()
-
-	def getMask(self, pos_x, pos_y, radius):
-		mask = Image.new("L",(1280,720),"black")
-		d = aggdraw.Draw(mask)
-		p = aggdraw.Pen("white", 2.5)
-		b = aggdraw.Brush("white")
-		d.ellipse((pos_x - radius, pos_y - radius, 
-			pos_x + radius,pos_y + radius), p, b)
-		d.flush()
-		return mask
 
 class OneThought:
 
@@ -51,7 +15,7 @@ class OneThought:
 		self.bubble1 = Tools.TimedBubble(pos_x,358,10,startTime,startTime+35,30,5)
 		self.bubble2 = Tools.TimedBubble(pos_x,318,15,startTime,startTime+35,20,15)
 		self.bubble3 = Tools.TimedBubble(pos_x,268,20,startTime,startTime+35,10,25)
-		self.rectangualar = Tools.MorphingTextBox(image, pos_x,268,20,startTime+35)
+		self.rectangualar = Tools.MorphingTextBox(image, pos_x,997,20,startTime+35)
 
 	def inc(self):
 		self.bubble1.inc()
@@ -91,7 +55,7 @@ class ThoughtfulTransition:
 		self.bubble1 = Tools.TimedBubble(pos_x,358,10,startTime,startTime+35,30,5)
 		self.bubble2 = Tools.TimedBubble(pos_x,318,15,startTime,startTime+35,20,15)
 		self.bubble3 = Tools.TimedBubble(pos_x,268,20,startTime,startTime+35,10,25)
-		self.transcendingBubble = TranscendingBubble(image, pos_x, 268, 20, 
+		self.transcendingBubble = Tools.TranscendingBubble(image, pos_x, 268, 20, 
 			startTime+35)
 
 	def inc(self):
@@ -147,7 +111,7 @@ pensombre = Image.open("./pensombre.png")
 thoughts.append(ThoughtfulTransition(650, pensombre, 380))
 
 
-production = True
+production = False
 iOffset = 456 if production else 0
 
 for i in range(0,800):
