@@ -241,7 +241,6 @@ class Phrases:
 		d.text((30,25), "they are big", font)
 		d.text((10,55), "and casy to build", font)
 		d.flush()
-		d.flush()
 		return image
 
 	@staticmethod
@@ -253,7 +252,61 @@ class Phrases:
 		d.text((50,35), "on the other side?", font)
 		d.text((10,65), "Difference seperates us, but", font)
 		d.text((10,95), "it also makes us stronger, ", font)
-		d.text((170,125), "doesnt it?", font)
-		d.flush()
+		d.text((170,125), "doesn't it?", font)
 		d.flush()
 		return image
+
+	@staticmethod
+	def getPhrase23():
+		image = Image.new("L",(190,60),"black")
+		d = aggdraw.Draw(image)
+		font = aggdraw.Font("white", "font1.ttf",36)
+		d.text((10, 0), "That wall is big", font)
+		d.text((20,25), "but made of blocks...", font)
+		d.flush()
+		return image	
+
+	@staticmethod
+	def getPhrase24():
+		image = Image.new("L",(220,95),"black")
+		d = aggdraw.Draw(image)
+		font = aggdraw.Font("white", "font1.ttf",36)
+		d.text((10, 0), "That wall's blocks", font)
+		d.text((20,25), "can be used to connect", font)
+		d.text((40,55), "and not to divide ", font)
+		d.flush()
+		return image
+
+	@staticmethod
+	def getPhrase25():
+		image = Image.new("L",(260,105),"black")
+		d = aggdraw.Draw(image)
+		font = aggdraw.Font("white", "font1.ttf",36)
+		d.text((10, 0), "If each block is worth $25 usd", font)
+		d.text((10,35), "and I could take it from the wall", font)
+		d.text((40,65), "and throw it...", font)
+		d.flush()
+		return image
+
+	@staticmethod
+	def getPhrase26(i):
+		image = Image.new("L",(510,170),"black")
+		d = aggdraw.Draw(image)
+		font = aggdraw.Font("white", "adler.ttf",36)
+		d.text((10, 0), "PSYDEH:"[0:i], font)
+		d.text((10,45), "At the table with our"[0:max(i-8,0)], font)
+		d.text((10,85), "rural and indigenous"[0:max(i-29,0)], font)
+		d.text((10,125), "partners in Mexico"[0:max(i-49,0)], font)
+		d.flush()
+		return image
+
+	@staticmethod
+	def getPhrase27(i):
+		image = Image.new("L",(510,60),"black")
+		d = aggdraw.Draw(image)
+		font = aggdraw.Font("white", "adler.ttf",40)
+		d.text((10, 0), "www.psydeh.com"[0:max(i,0)], font)
+		d.flush()
+		return image						
+
+#Phrases.getPhrase26(50).show()	

@@ -15,7 +15,7 @@ class OneThought:
 		self.bubble1 = Tools.TimedBubble(pos_x,358,10,startTime,startTime+35,30,5)
 		self.bubble2 = Tools.TimedBubble(pos_x,318,15,startTime,startTime+35,20,15)
 		self.bubble3 = Tools.TimedBubble(pos_x,268,20,startTime,startTime+35,10,25)
-		self.rectangualar = Tools.MorphingTextBox(image, pos_x,997,20,startTime+35)
+		self.rectangualar = Tools.MorphingTextBox(image, pos_x,268,20,startTime+35)
 
 	def inc(self):
 		self.bubble1.inc()

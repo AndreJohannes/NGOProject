@@ -73,7 +73,7 @@ class TimedBubble:
 
 class MorphingTextBox:
 	
-	def __init__(self, image, pos_x, pos_y, radius, startTime):
+	def __init__(self, image, pos_x, pos_y, radius, startTime, hover = False):
 		self.image = image
 		self.pos_x = pos_x
 		self.pos_y = pos_y
@@ -81,12 +81,13 @@ class MorphingTextBox:
 		self.startTime = startTime
 		self.counter = 0
 		self.randomShift = random.randint(-10,10)
+		self.hover = hover
 
 	def draw(self, im):
 		if self.counter < self.startTime: 
 			return 
 		dt = self.counter  - self.startTime
-		y = int(self.pos_y + .2*(dt)) # self.pos_y - 2*dt
+		y = int(self.pos_y + .2*(dt)) if self.hover else self.pos_y - 2*dt
 		x = self.pos_x - 2*self.randomShift*math.sqrt((dt))
 		radius = int(max(self.radius - 2*dt / 2.,5))
 		hdx = min(int(self.radius + 2*dt / 2.),(self.image.size[0]+radius)/2)
@@ -142,7 +143,7 @@ class TranscendingBubble:
 
 class MovingBubble:
 
-	def __init__(self, pos_x, pos_y, radius, startTime, stopTime):
+	def __init__(self, pos_x, pos_y, radius, startTime, stopTime, left = False):
 		self.pos_x_initial = pos_x
 		self.pos_y_initial = pos_y
 		self.radius_initial = radius
@@ -152,13 +153,14 @@ class MovingBubble:
 		self.counter = 0
 		self.startTime = startTime
 		self.stopTime = stopTime
+		self.to_right = not left
 
 	def inc(self):
 		self.counter += 1
 		if(self.counter>=self.startTime):
 			dt = self.counter-self.startTime
-			self.pos_x = self.pos_x_initial + 5*dt
-			self.pos_y = self.pos_y_initial - 1*dt - 0.01*dt*dt
+			self.pos_x = self.pos_x_initial + 5*dt if self.to_right else self.pos_x_initial  - 5*dt
+			self.pos_y = self.pos_y_initial - 1*dt - 0.01*dt*dt 
 			self.radius = self.radius_initial + 0.5*dt
 
 
@@ -205,3 +207,66 @@ class RandomWalkTextBox:
 
 	def inc(self):
 		self.counter += 1
+
+
+
+class OneThought:
+
+	def __init__(self, startTime, image, pos_x):
+		self.bubble1 = Tools.TimedBubble(pos_x,358,10,startTime,startTime+35,30,5)
+		self.bubble2 = Tools.TimedBubble(pos_x,318,15,startTime,startTime+35,20,15)
+		self.bubble3 = Tools.TimedBubble(pos_x,268,20,startTime,startTime+35,10,25)
+		self.rectangualar = Tools.MorphingTextBox(image, pos_x,268,20,startTime+35)
+
+	def inc(self):
+		self.bubble1.inc()
+		self.bubble2.inc()
+		self.bubble3.inc()
+		self.rectangualar.inc()
+
+	def draw(self, im):
+		self.bubble1.draw(im)
+		self.bubble2.draw(im)
+		self.bubble3.draw(im)
+		self.rectangualar.draw(im)	
+
+class OneFlag:
+
+	def __init__(self, startTime, stopTime, name, pos_x, pos_y):
+		flags = Flags() 
+		self.image = flags.getFlag(name)
+		self.startTime = startTime
+		self.stopTime = stopTime
+		self.pos_x = pos_x
+		self.pos_y = pos_y
+		self.counter = 0
+
+	def draw(self, im):
+		if self.counter>=self.startTime and self.counter<=self.stopTime:
+			color = min(255,(self.counter-self.startTime)*30)
+			mask = Image.new("L",self.image.size,(color))
+			im.paste(self.image,(self.pos_x,self.pos_y),mask)
+
+	def inc(self):
+		self.counter += 1
+
+
+class ThoughtfulTransition:
+	def __init__(self, startTime, image, pos_x):
+		self.bubble1 = Tools.TimedBubble(pos_x,358,10,startTime,startTime+35,30,5)
+		self.bubble2 = Tools.TimedBubble(pos_x,318,15,startTime,startTime+35,20,15)
+		self.bubble3 = Tools.TimedBubble(pos_x,268,20,startTime,startTime+35,10,25)
+		self.transcendingBubble = Tools.TranscendingBubble(image, pos_x, 268, 20, 
+			startTime+35)
+
+	def inc(self):
+		self.bubble1.inc()
+		self.bubble2.inc()
+		self.bubble3.inc()
+		self.transcendingBubble.inc()
+
+	def draw(self, im):
+		self.bubble1.draw(im)
+		self.bubble2.draw(im)
+		self.bubble3.draw(im)
+		self.transcendingBubble.draw(im)			
