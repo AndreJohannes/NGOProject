@@ -8,7 +8,6 @@ from Python.flags import Flags
 import Python.tools as Tools
 
 
-
 class OneThought:
 
 	def __init__(self, startTime, image, pos_x):
@@ -45,7 +44,7 @@ for i in range(0,200):
 		if(dic.has_key(i-170)):
 			base2 = Image.open("./base2.png")
 			mask = Image.new("L",(1280,720),"white")
-			mask.paste("black",(0,0,dic[i-170],720))
+			mask.paste("black",(0,0,dic[i-1 70],720))
 			base.paste(base2,(0,0),mask)
 	im.paste(base,(0,0))
 	for thought in thoughts:
@@ -54,6 +53,6 @@ for i in range(0,200):
 	d = ImageDraw.Draw(im)
 	d.text((0,0),str(i+iOffset),"black")
 	print "saving image:" , i 
-	im.save("./images/image" + str(i+iOffset) + ".png","png") if not production else im.save("../Movie/image" + str(i+iOffset) + ".png","png")
+	im.save("./images/image" + str(i+iOffset) + ".png","png") if not production else im.save("../Movie/images/image" + str(i+iOffset) + ".png","png")
 
 

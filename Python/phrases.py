@@ -307,6 +307,68 @@ class Phrases:
 		font = aggdraw.Font("white", "adler.ttf",40)
 		d.text((10, 0), "www.psydeh.com"[0:max(i,0)], font)
 		d.flush()
-		return image						
+		return image
+
+	@staticmethod
+	def getPhrase28():
+		image = Image.new("L",(260,135),"black")
+		d = aggdraw.Draw(image)
+		font = aggdraw.Font("white", "font1.ttf",36)
+		d.text((10, 0), "And if the person on the other", font)
+		d.text((20,35), "side of that Big ol'Wall does", font)
+		d.text((20,65), "the same, wow, the beautiful", font)
+		d.text((20,95), "might even be sustainable", font)
+		d.flush()
+		return image	
+
+	@staticmethod
+	def getPhrase29():
+		image = Image.new("L",(200,75),"black")
+		d = aggdraw.Draw(image)
+		font = aggdraw.Font("white", "font1.ttf",36)
+		d.text((10, 0), "We are made better", font)
+		d.text((20,35), "through collaboration!", font)
+		d.flush()
+		return image	
+
+	@staticmethod
+	def getPhrase30():
+		image = Image.new("L",(150,35),"black")
+		d = aggdraw.Draw(image)
+		font = aggdraw.Font("white", "font1.ttf",36)
+		d.text((50, 0), "IBAM!", font)
+		d.flush()
+		return image
+
+	@staticmethod
+	def getPhrase31():
+		image = Image.new("L",(310,165),"black")
+		d = aggdraw.Draw(image)
+		font = aggdraw.Font("white", "font1.ttf",36)
+		d.text((10, 0), "I know just the right project", font)
+		d.text((20,35), "in which I, Hondurans, Argentinians", font)
+		d.text((20,65), "Germans, Spaniards and all the", font)
+		d.text((20,95), "other global citizes can invest", font)
+		d.text((200,125), "$25 blocks", font)
+		d.flush()
+		return image	
+
+	@staticmethod
+	def getPhrase32(i):
+		image = Image.new("L",(1150,170),"black")
+		d = aggdraw.Draw(image)
+		font = aggdraw.Font("white", "adler.ttf",36)
+		text = ["In central Mexico, there is a small and rugged"]
+		text.append("and beautiful state called Hidalgo.")
+		text.append("There Mexico's 4th largest indigenous population")
+		text.append("is spread among three regions.")
+		offset = 0 
+		offsetY = 0
+		for frag in text:
+			d.text((10,offsetY),frag[0:max(i-offset,0)],font)
+			offsetY += 40
+			offset += len(frag)
+		d.flush()
+		return image	
 
 #Phrases.getPhrase26(50).show()	
