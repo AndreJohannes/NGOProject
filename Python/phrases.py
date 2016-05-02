@@ -371,4 +371,65 @@ class Phrases:
 		d.flush()
 		return image	
 
+	@staticmethod
+	def getPhrase33(i):
+		image = Image.new("L",(850,95),"black")
+		d = aggdraw.Draw(image)
+		font = aggdraw.Font("white", "adler.ttf",36)
+		text = ["In the Otomi-tepehua region"]
+		text.append("sit four majority indigenous areas.")
+		offset = 0 
+		offsetY = 0
+		for frag in text:
+			d.text((10,offsetY),frag[0:max(i-offset,0)],font)
+			offsetY += 40
+			offset += len(frag)
+		d.flush()
+		return image	
+
+	@staticmethod
+	def getPhrase34(i):
+		image = Image.new("L",(1150,905),"black")
+		d = aggdraw.Draw(image)
+		font = aggdraw.Font("white", "adler.ttf",36)
+		text = ["-For centuries, indigenous citizens have been"]
+		text.append(" seperated by high walls - ..cluding community")
+		text.append(" from community, municipality from municipality")
+		text.append(" and the region from the State, country and")
+		text.append(" the world...")
+		text.append("             ")
+		text.append("-85% of the 90000 indigenous people speak Spanish")
+		text.append(" and some combination of Otomi, Nahuatl and ")
+		text.append(" Tepehua and live on $100 usd  or less per month...")
+		text.append("             ")
+		text.append("-Less than 1% of homes have a computer.")
+		text.append("             ")
+		text.append("-35% of indigenous woman are funcional illiterate.")
+		offset = 0 
+		offsetY = 0
+		for frag in text:
+			d.text((10,offsetY),frag[0:max(i-offset,0)],font)
+			offsetY += 40
+			offset += len(frag)
+		d.flush()
+		return image
+
+	@staticmethod
+	def getPhrase35(i):
+		image = Image.new("L",(1150,170),"black")
+		d = aggdraw.Draw(image)
+		font = aggdraw.Font("white", "adler.ttf",36)
+		text = ["-In spite of the statistics in 2013 the region's"]
+		text.append(" citizens decided to organize to break down")
+		text.append(" the walls and begin to build from the bottom-up")
+		text.append(" the new sustainable reality....")
+		offset = 0 
+		offsetY = 0
+		for frag in text:
+			d.text((10,offsetY),frag[0:max(i-offset,0)],font)
+			offsetY += 40
+			offset += len(frag)
+		d.flush()
+		return image	
+
 #Phrases.getPhrase26(50).show()	
