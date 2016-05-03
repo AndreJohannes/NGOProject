@@ -12,7 +12,7 @@ class Node:
 		self.girth = girth
 		self.has_leave = leave
 		self.leave_size = 20
-		self.leave_color = (random.randint(40,120), random.randint(180,250), random.randint(0,50))
+		self.leave_color = (random.randint(40,180), random.randint(120,250), random.randint(0,50))
 		self._absolut_position = absolut_position
 		if parent is None:
 			self.position = absolut_position
@@ -57,7 +57,7 @@ def addChildrenFromXML(parent, node):
 		addChildrenFromXML(element, _node) 
 
 
-
+678,501
 root = ET.parse("tree.xml").getroot()
 node = Node(None, [329,428],1, False)
 addChildrenFromXML(root, node)
@@ -66,8 +66,8 @@ def paint_branches(parent, offset, im):
 	for node in parent.children:
 		d = aggdraw.Draw(im)
 		p = aggdraw.Pen("black", node.girth)
-		d.line((parent._absolut_position[0],parent._absolut_position[1],
-			node._absolut_position[0],node._absolut_position[1]),p)
+		d.line((parent._absolut_position[0]+349,parent._absolut_position[1]+73
+			,node._absolut_position[0]+349,node._absolut_position[1]+73),p)
 		d.flush()
 		paint_branches(node, [offset[0]+node.position[0],
 			offset[1]+node.position[1]], im)
@@ -78,8 +78,8 @@ def paint_leaves(parent, offset, im):
 			d = aggdraw.Draw(im)
 			p = aggdraw.Pen(node.leave_color, 1)
 			b = aggdraw.Brush(node.leave_color,255)
-			d.ellipse((node._absolut_position[0]-1.4*node.leave_size,node._absolut_position[1]-1.4*node.leave_size,
-				node._absolut_position[0]+0.6*node.leave_size,node._absolut_position[1]+0.6*node.leave_size),p,b)
+			d.ellipse((349+node._absolut_position[0]-1.4*node.leave_size,73+node._absolut_position[1]-1.4*node.leave_size,
+				349+node._absolut_position[0]+0.6*node.leave_size,73+node._absolut_position[1]+0.6*node.leave_size),p,b)
 			d.flush()
 		paint_leaves(node, [offset[0]+node.position[0],
 			offset[1]+node.position[1]], im)
@@ -87,7 +87,7 @@ def paint_leaves(parent, offset, im):
 
 for i in range(0,200):
 	node.shrink(None)
-	im = Image.new("RGBA",(1280,720),"white")
+	im = Image.open("./base.png")#Image.new("RGBA",(1280,720),"white")
 	paint_branches(node,[0,0], im)
 	paint_leaves(node,[0,0], im)
 	im.save("./images/image{}.png".format(199-i),"png")
