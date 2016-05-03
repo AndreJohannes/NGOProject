@@ -28,12 +28,12 @@ class Node:
 			y = self.position[1]
 			length = math.sqrt( x*x + y*y )
 			if length > 0:
-				factor = max(( length - 1 ) / length ,0)
+				factor = max(( length - 0.5 ) / length ,0)
 			else:
 				factor = 0
 			self.position[0] = factor * x
 			self.position[1] = factor * y
-			self.girth = max(1, self.girth*0.95)
+			self.girth = max(1, self.girth*0.975)
 			self._absolut_position = [parent._absolut_position[0] + self.position[0],
 				parent._absolut_position[1] + self.position[1]]
 		for child in self.children:
@@ -81,12 +81,12 @@ def paint_leaves(parent, offset, im):
 			offset[1]+node.position[1]], im)
 
 
-for i in range(0,100):
+for i in range(0,200):
 	node.shrink(None)
 	im = Image.new("RGBA",(1280,720),"white")
 	paint_branches(node,[0,0], im)
 	paint_leaves(node,[0,0], im)
-	im.save("./images/image{}.png".format(99-i),"png")
+	im.save("./images/image{}.png".format(199-i),"png")
 
 #im = Image.new("L",(1280,720),"white")
 #func(node,[0,0], im ,0)

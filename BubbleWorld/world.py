@@ -27,7 +27,7 @@ for i in range(0,80):
 	d = ImageDraw.Draw(im)
 	d.text((0,0),str(i+iOffset),"black")
 
-	im.save("../Movie/image"+str(i+iOffset)+".png","png")
+	im.save("./images/image"+str(i+iOffset)+".png","png")
 
 iOffset = 380
 for i in range(0,80):
@@ -40,7 +40,7 @@ for i in range(0,80):
 	d = ImageDraw.Draw(im)
 	d.text((0,0),str(i+iOffset),"black")
 
-	im.save("../Movie/image"+str(i+iOffset)+".png","png")
+	im.save("./images/image"+str(i+iOffset)+".png","png")
 
 
 

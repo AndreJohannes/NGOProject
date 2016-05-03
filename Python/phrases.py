@@ -432,4 +432,50 @@ class Phrases:
 		d.flush()
 		return image	
 
+	@staticmethod
+	def getPhrase36(i):
+		image = Image.new("L",(1150,205),"black")
+		d = aggdraw.Draw(image)
+		font = aggdraw.Font("white", "adler.ttf",36)
+		text = ["-Partnering with the innovative Mexican NGO "]
+		text.append(" PSYDEH, in 2014 and 2015, with indigenous women")
+		text.append(" leaders in the front, citizens begin to climb over")
+		text.append(" the still crumbly walls and began to plant the")
+		text.append(" seeds for a new sustanable future.")
+		offset = 0 
+		offsetY = 0
+		for frag in text:
+			d.text((10,offsetY),frag[0:max(i-offset,0)],font)
+			offsetY += 40
+			offset += len(frag)
+		d.flush()
+		return image
+
+	@staticmethod
+	def getPhrase37(i):
+		image = Image.new("L",(1150,505),"black")
+		d = aggdraw.Draw(image)
+		font = aggdraw.Font("white", "adler.ttf",36)
+		text = ["The unprecedented seeds came in the form of: "]
+		text.append("     ")
+		text.append(" -Learning about the rights and obligations as")
+		text.append("  indigenous citizens")
+		text.append("     ")
+		text.append(" -Learning about the autonomy as people and ")
+		text.append("  and indigenous communities")
+		text.append("     ")
+		text.append(" -Only clairvoyant ppl would be able to read ")
+		text.append("  what is supposed to be here")
+		text.append("     ")
+		text.append(" -Only clairvoyant ppl would be able to read ")
+		text.append("  what is supposed to be here")
+		offset = 0 
+		offsetY = 0
+		for frag in text:
+			d.text((10,offsetY),frag[0:max(i-offset,0)],font)
+			offsetY += 40
+			offset += len(frag)
+		d.flush()
+		return image
+
 #Phrases.getPhrase26(50).show()	
