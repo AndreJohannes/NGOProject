@@ -51,6 +51,10 @@ class ThoughtfulTransition:
 		self.transcendingBubble.draw(im)	
 
 base = Image.open("./base.png")
+d = aggdraw.Draw(base)
+p = aggdraw.Pen("black", 8.46666)
+d.ellipse((640-315,596,640+315,596),p)
+d.flush()
 
 thoughts = [OneThought(0, Phrases.getPhrase23(),380)]
 thoughts.append(OneThought(30, Phrases.getPhrase24(),945))
@@ -71,6 +75,6 @@ for i in range(0,210):
 	d = ImageDraw.Draw(im)
 	d.text((0,0),str(i+iOffset),"black")
 	print "saving image:" , i 
-	im.save("./images/image" + str(i+iOffset) + ".png","png") if not production else im.save("../Movie/image" + str(i+iOffset) + ".png","png")
+	im.save("./images/image" + str(i+iOffset) + ".png","png") if not production else im.save("../Movie/images/image" + str(i+iOffset) + ".png","png")
 
  	

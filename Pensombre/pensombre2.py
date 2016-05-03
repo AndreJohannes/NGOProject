@@ -55,5 +55,5 @@ for i in range(0,200):
 	d = ImageDraw.Draw(im)
 	d.text((0,0),str(i+iOffset),"black")
 	print "saving image:" , i 
-	im.save("./images/image" + str(i+iOffset) + ".png","png") if not production else im.save("../Movie/image" + str(i+iOffset) + ".png","png")
+	im.save("./images/image" + str(i+iOffset) + ".png","png") if not production else im.save("../Movie/images/image" + str(i+iOffset) + ".png","png")
 

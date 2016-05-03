@@ -14,7 +14,7 @@ class OneThought:
 		self.bubble1 = Tools.MovingBubble(pos_x,163,10,startTime, None)
 		self.bubble2 = Tools.MovingBubble(pos_x,163,10,startTime+30, None)
 		self.bubble3 = Tools.MovingBubble(pos_x,163,10,startTime+60, startTime + 80)
-		self.rectangualar = Tools.MorphingTextBox(image, 977,139,20,startTime+80, true)
+		self.rectangualar = Tools.MorphingTextBox(image, 977,139,20,startTime+80, True)
 
 	def inc(self):
 		self.bubble1.inc()
@@ -43,8 +43,12 @@ for i in range(0,200):
 		base = Image.open("./images/slider/image"+ "{:02d}".format(max(min(i-170,28),0)) +".png")
 		if(dic.has_key(i-170)):
 			base2 = Image.open("./base2.png")
+			d = aggdraw.Draw(base2)
+			p = aggdraw.Pen("black", 8.46666)
+			d.ellipse((640-315,596,640+315,596),p)
+			d.flush()
 			mask = Image.new("L",(1280,720),"white")
-			mask.paste("black",(0,0,dic[i-1 70],720))
+			mask.paste("black",(0,0,dic[i-170],720))
 			base.paste(base2,(0,0),mask)
 	im.paste(base,(0,0))
 	for thought in thoughts:

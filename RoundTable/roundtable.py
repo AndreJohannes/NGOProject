@@ -8,7 +8,7 @@ from Python.flags import Flags
 import Python.tools as Tools
 import Python.transitions as Transitions
 
-production = True
+production =  True
 iOffset = 1846 if production else 0
 
 base = Image.open("./base.png")

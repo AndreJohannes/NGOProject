@@ -2,6 +2,7 @@ import xml.etree.ElementTree as ET
 from PIL import Image
 import aggdraw
 import math
+import random 
 
 class Node:
 
@@ -10,6 +11,8 @@ class Node:
 		self.children = []
 		self.girth = girth
 		self.has_leave = leave
+		self.leave_size = 20
+		self.leave_color = (random.randint(40,120), random.randint(180,250), random.randint(0,50))
 		self._absolut_position = absolut_position
 		if parent is None:
 			self.position = absolut_position
@@ -34,6 +37,7 @@ class Node:
 			self.position[0] = factor * x
 			self.position[1] = factor * y
 			self.girth = max(1, self.girth*0.975)
+			self.leave_size = max(4, self.leave_size*0.975)
 			self._absolut_position = [parent._absolut_position[0] + self.position[0],
 				parent._absolut_position[1] + self.position[1]]
 		for child in self.children:
@@ -72,10 +76,10 @@ def paint_leaves(parent, offset, im):
 	for node in parent.children:
 		if node.has_leave:
 			d = aggdraw.Draw(im)
-			p = aggdraw.Pen("green", 1)
-			b = aggdraw.Brush("green",255)
-			d.ellipse((node._absolut_position[0]-20,node._absolut_position[1]-20,
-				node._absolut_position[0]+10,node._absolut_position[1]+10),p,b)
+			p = aggdraw.Pen(node.leave_color, 1)
+			b = aggdraw.Brush(node.leave_color,255)
+			d.ellipse((node._absolut_position[0]-1.4*node.leave_size,node._absolut_position[1]-1.4*node.leave_size,
+				node._absolut_position[0]+0.6*node.leave_size,node._absolut_position[1]+0.6*node.leave_size),p,b)
 			d.flush()
 		paint_leaves(node, [offset[0]+node.position[0],
 			offset[1]+node.position[1]], im)
