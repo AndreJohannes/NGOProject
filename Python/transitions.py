@@ -84,3 +84,38 @@ def pageflip(image1, image2, imax, callback):
 
 		callback(om1, i)
 		callback(om2, 2*imax - i )	
+
+def horizontalflip(image1, image2, imax, callback):
+
+	rect = [[0,0],[1280,0],[1280,720],[0,720]]
+	imax = imax/2
+
+	image1 = image1.convert("RGBA")
+	image2 = image2.convert("RGBA")
+	callback(Image.new("RGBA",(1280,720),"white"), imax)
+
+	for i in range(0, imax):
+
+		om1 = Image.new("RGBA",(1280,720),"white")
+		om2 = Image.new("RGBA",(1280,720),"white")
+
+		rad = -i / (2.0*imax) * math.pi
+ 		dz  = 360 * math.sin(rad)
+ 		C = 2000
+		dx1 = 640  * C / (C-dz)
+		dy1 = 360 * math.cos(rad) * C / (C-dz) 
+		dx2 = 640  * C / (C+dz)
+		dy2 = 360 * math.cos(rad) * C / (C+dz) 
+
+		pa = [[640-dx1, 360-dy1],[640+dx1,360-dy1],[640+dx2,360+dy2],[640-dx2,360+dy2]]
+		data =  helpers.find_coeffs(pa,rect).tolist()
+		tm = image1.transform((1280,720), Image.PERSPECTIVE,data,  Image.BICUBIC)
+		om1.paste(tm,(0,0), tm)
+		callback(om1, i)
+
+		pa = [[640-dx2, 360-dy2],[640+dx2,360-dy2],[640+dx1,360+dy1],[640-dx1,360+dy1]]
+		data =  helpers.find_coeffs(pa,rect).tolist()
+		tm2 = image2.transform((1280,720), Image.PERSPECTIVE,data,  Image.BICUBIC)
+		om2.paste(tm2,(0,0), tm2)
+		callback(om2 ,-i+2*imax)
+

@@ -76,49 +76,39 @@ p = aggdraw.Pen("black", 8.46666)
 d.ellipse((640-315,596,640+315,596),p)
 d.flush()
 
-thoughts = [OneThought(0, Phrases.getPhrase1(),380)]
-thoughts.append(OneThought(30, Phrases.getPhrase2(),945))
-thoughts.append(OneThought(60, Phrases.getPhrase3(),380))
-thoughts.append(OneThought(90, Phrases.getPhrase4(),945))
-thoughts.append(OneThought(120, Phrases.getPhrase5(),380))
+thoughts = [OneThought(0, Phrases.getPhrase2(),380)]
+thoughts.append(OneThought(30, Phrases.getPhrase3(),945))
+thoughts.append(OneThought(60, Phrases.getPhrase4(),380))
+thoughts.append(OneThought(90, Phrases.getPhrase5(),945))
+thoughts.append(OneThought(120, Phrases.getPhrase6(),380))
 thoughts.append(OneThought(150, Phrases.getPhrase7(),945))
-thoughts.append(OneThought(180, Phrases.getPhrase6(),380))
+thoughts.append(OneThought(180, Phrases.getPhrase8(),380))
 thoughts.append(OneThought(210, Phrases.getPhrase9(),945))
-thoughts.append(OneThought(240, Phrases.getPhrase8(),380))
+thoughts.append(OneThought(240, Phrases.getPhrase10(),380))
 thoughts.append(OneThought(270, Phrases.getPhrase11(),945))
-thoughts.append(OneThought(300, Phrases.getPhrase10(),380))
+thoughts.append(OneThought(300, Phrases.getPhrase12(),380))
 thoughts.append(OneThought(330, Phrases.getPhrase13(),945))
-thoughts.append(OneThought(360, Phrases.getPhrase12(),380))
+thoughts.append(OneThought(360, Phrases.getPhrase14(),380))
 thoughts.append(OneThought(390, Phrases.getPhrase15(),945))
-thoughts.append(OneThought(420, Phrases.getPhrase14(),380))
-thoughts.append(OneThought(450, Phrases.getPhrase16(),945))
+thoughts.append(OneThought(420, Phrases.getPhrase16(),380))
 
-thoughts.append(OneThought(480, Phrases.getPhrase17(),380))
-thoughts.append(OneThought(510, Phrases.getPhrase18(),945))
-thoughts.append(OneThought(540, Phrases.getPhrase19(),380))
-thoughts.append(OneThought(570, Phrases.getPhrase20(),945))
-thoughts.append(OneThought(600, Phrases.getPhrase21(),380))
-
-flags = [OneFlag(190, 260, "germany", 826, 349)]
-flags.append(OneFlag(220, 290, "namerica", 462, 349))
-flags.append(OneFlag(250, 320, "russia", 826, 349))
-flags.append(OneFlag(280, 350, "guatemala", 462, 349))
+flags = [OneFlag(160, 230, "america", 462, 349)]
+flags.append(OneFlag(190, 260, "mexican", 826, 349))
+flags.append(OneFlag(220, 290, "argentina", 462, 349))
+flags.append(OneFlag(250, 320, "british", 826, 349))
+flags.append(OneFlag(280, 350, "germany", 462, 349))
 flags.append(OneFlag(310, 380, "spain", 826, 349))
-flags.append(OneFlag(340, 410, "honduras", 462, 349))
-flags.append(OneFlag(370, 440, "scottland", 826, 349))
-flags.append(OneFlag(400, 470, "brazil", 462, 349))
-flags.append(OneFlag(430, 500, "australia", 826, 349))
-flags.append(OneFlag(460, 530, "argentina", 462, 349))
-flags.append(OneFlag(490, 560, "nigeria", 826, 349))
+flags.append(OneFlag(340, 410, "japanese", 462, 349))
+flags.append(OneFlag(370, 440, "kiwi", 826, 349))
 
 pensombre = Image.open("./pensombre.png")
-thoughts.append(ThoughtfulTransition(650, pensombre, 380))
+thoughts.append(ThoughtfulTransition(470, pensombre, 380))
 
 
-production = not False
+production =  not False
 iOffset = 456 if production else 0
 
-for i in range(0,800):
+for i in range(0,620):
 	im = Image.new("RGBA",(1280,720),"white")
 	im.paste(base,(0,0))
 	for thought in thoughts:
@@ -129,7 +119,7 @@ for i in range(0,800):
 		flag.inc()
 	d = ImageDraw.Draw(im)
 	d.text((0,0),str(i+iOffset),"black")
-	print "saving image:" , i 
+	print "saving image:" , i + iOffset
 	im.save("./images/image" + str(i+iOffset) + ".png","png") if not production else im.save("../Movie/images/image" + str(i+iOffset) + ".png","png")
 
  	

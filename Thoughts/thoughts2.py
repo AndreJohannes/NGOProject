@@ -56,17 +56,18 @@ p = aggdraw.Pen("black", 8.46666)
 d.ellipse((640-315,596,640+315,596),p)
 d.flush()
 
-thoughts = [OneThought(0, Phrases.getPhrase23(),380)]
-thoughts.append(OneThought(30, Phrases.getPhrase24(),945))
+thoughts = [OneThought(0, Phrases.getPhrase18(),380)]
+thoughts.append(OneThought(30, Phrases.getPhrase19(),945))
+thoughts.append(OneThought(60, Phrases.getPhrase20(),300))
 
 pensombre = Image.open("./pensombre.png")
-thoughts.append(ThoughtfulTransition(80, pensombre, 945))
+thoughts.append(ThoughtfulTransition(110, pensombre, 945))
 
 
 production = True
-iOffset = 1436 if production else 0
+iOffset = 1256 if production else 0
 
-for i in range(0,210):
+for i in range(0,240):
 	im = Image.new("RGBA",(1280,720),"white")
 	im.paste(base,(0,0))
 	for thought in thoughts:
@@ -74,7 +75,7 @@ for i in range(0,210):
 		thought.inc()
 	d = ImageDraw.Draw(im)
 	d.text((0,0),str(i+iOffset),"black")
-	print "saving image:" , i 
+	print "saving image:" , i + iOffset 
 	im.save("./images/image" + str(i+iOffset) + ".png","png") if not production else im.save("../Movie/images/image" + str(i+iOffset) + ".png","png")
 
  	

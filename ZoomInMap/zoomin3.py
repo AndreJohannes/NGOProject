@@ -9,14 +9,14 @@ import Python.transitions as Transitions
 istart = 510
 
 production =not False
-iOffset = 2717+istart if production else istart
+iOffset = 2046+istart if production else istart
 
 dOffset = 70
 for i in range(0, dOffset):
 
 	im = Image.open("./images/preps/image{}.png".format(i + istart))
 
-	textMask = Phrases.getPhrase33(i)
+	textMask = Phrases.getPhrase25(i)
 	im.paste("black",(50, 330),textMask)
 
 	d = ImageDraw.Draw(im)
@@ -31,7 +31,7 @@ ref = iOffset
 dOffset = 40
 def callback(im, i):
 	color = 255*(1-min((i+iOffset-ref)/20.,1.))
-	textMask = Phrases.getPhrase33(1000)
+	textMask = Phrases.getPhrase25(1000)
 	textMask2 = Image.new("L",textMask.size,"black")
 	textMask2.paste((color),(0,0),textMask)
 	im.paste("black",(50, 330),textMask2)

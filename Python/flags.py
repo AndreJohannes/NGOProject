@@ -9,6 +9,7 @@ class Flags:
 
 	def __init__(self):
 		self.dict = {}
+		self.dict["america"] = Flags.getAmericanFlag()
 		self.dict["argentina"] = Flags.getArgentinanFlag()
 		self.dict["australia"] = Flags.getAustralianFlag()
 		self.dict["brazil"] = Flags.getBrazilianFlag()
@@ -20,10 +21,19 @@ class Flags:
 		self.dict["russia"] = Flags.getRussianFlag()
 		self.dict["scottland"] = Flags.getScottishFlag()
 		self.dict["spain"] = Flags.getSpanishFlag()
+		self.dict["mexican"] = Flags.getMexicanFlag()
+		self.dict["british"] = Flags.getBritishFlag()
+		self.dict["japanese"] = Flags.getJapaneseFlag()
+		self.dict["kiwi"] = Flags.getKiwiFlag()
 
 
 	def getFlag(self, name):
 		return self.dict[name]
+
+	@staticmethod
+	def getAmericanFlag():
+		image = Image.open("./Flags/america.png")
+		return image.resize((91,58)).convert("RGBA")
 
 	@staticmethod
 	def getArgentinanFlag():
@@ -78,4 +88,24 @@ class Flags:
 	@staticmethod
 	def getSpanishFlag():
 		image = Image.open("./Flags/spanish.png")
+		return image.resize((91,58)).convert("RGBA")
+
+	@staticmethod
+	def getMexicanFlag():
+		image = Image.open("./Flags/mexican.png")
+		return image.resize((91,58)).convert("RGBA")
+
+	@staticmethod
+	def getJapaneseFlag():
+		image = Image.open("./Flags/japan.png")
+		return image.resize((91,58)).convert("RGBA")
+
+	@staticmethod
+	def getKiwiFlag():
+		image = Image.open("./Flags/kiwi.png")
+		return image.resize((91,58)).convert("RGBA")
+
+	@staticmethod
+	def getBritishFlag():
+		image = Image.open("./Flags/british.png")
 		return image.resize((91,58)).convert("RGBA")

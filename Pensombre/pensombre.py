@@ -29,16 +29,19 @@ class OneThought:
 		self.rectangualar.draw(im)	
 
 
-thoughts = [OneThought(0, Phrases.getPhrase22(),877)]
+thoughts = [OneThought(0, Phrases.getPhrase17(), 877)]
 
 dic =  {10:1221,11:1196,12:1153,13:1096,14:1022,15:952,16:874,17:797,18:724,19:646,20:562,21:476,22:391,23:297,24:208,25:80}
 
 production = True
-iOffset = 1240 if production else 0
+iOffset = 1060 if production else 0
 
 for i in range(0,200):
 	im = Image.new("RGBA",(1280,720),"white")
-	base = Image.open("./images/rollingeyes/image"+ "{:02d}".format(max(min(i-30,56),0)) +".png")
+	if(i<=85):
+		base = Image.open("./images/rollingeyes/left_right/image{}.png".format(max(min(i-0,47),0)))
+	else:
+		base = Image.open("./images/rollingeyes/topright/image{}.png".format(max(min(i-85,9),0)))
 	if(i>170):
 		base = Image.open("./images/slider/image"+ "{:02d}".format(max(min(i-170,28),0)) +".png")
 		if(dic.has_key(i-170)):
@@ -56,7 +59,7 @@ for i in range(0,200):
 		thought.inc()
 	d = ImageDraw.Draw(im)
 	d.text((0,0),str(i+iOffset),"black")
-	print "saving image:" , i 
+	print "saving image:" , i + iOffset
 	im.save("./images/image" + str(i+iOffset) + ".png","png") if not production else im.save("../Movie/images/image" + str(i+iOffset) + ".png","png")
 
 

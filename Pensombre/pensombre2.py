@@ -32,7 +32,7 @@ class OneThought:
 
 thoughts = [OneThought(0, Phrases.getPhrase25(),500)]
 
-production = True
+production = not True
 iOffset = 1646 if production else 0
 
 for i in range(0,200):

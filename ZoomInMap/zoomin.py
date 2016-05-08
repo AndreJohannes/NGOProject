@@ -7,15 +7,15 @@ import Python.transitions as Transitions
 
 
 production = not False
-iOffset = 2717 if production else 0
+iOffset = 2046 if production else 0
 
 dOffset = 170
 for i in range(0, dOffset):
 
 	im = Image.open("./images/preps/image{}.png".format(min(i, 169)))
 
-	textMask = Phrases.getPhrase32(i)
-	im.paste("black",(50, 300),textMask)
+	textMask = Phrases.getPhrase24(i)
+	im.paste("black",(50, 280),textMask)
 
 	d = ImageDraw.Draw(im)
 	d.text((0,0),str(i+iOffset),"black")
@@ -31,10 +31,10 @@ for i in range(0, 100):
 
 	color = 255.*(1-i/99.)
 
-	textMask = Phrases.getPhrase32(1000)
+	textMask = Phrases.getPhrase24(170+i)
 	textMask2 = Image.new("L",textMask.size,"black")
 	textMask2.paste((color),(0,0),textMask)
-	im.paste("black",(50, 300),textMask2)
+	im.paste("black",(50, 280),textMask2)
 
 	d = ImageDraw.Draw(im)
 	d.text((0,0),str(i+iOffset),"black")

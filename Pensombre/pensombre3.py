@@ -32,18 +32,20 @@ class OneThought:
 		self.rectangualar.draw(im)	
 
 
-thoughts = [OneThought(0, Phrases.getPhrase28(),500, True)]
-thoughts.append(OneThought(100, Phrases.getPhrase29(),877, False))
-thoughts.append(OneThought(200, Phrases.getPhrase30(),500, True))
-thoughts.append(OneThought(350, Phrases.getPhrase31(),500, True))
+thoughts = [OneThought(0, Phrases.getPhrase21(),500, True)]
+thoughts.append(OneThought(100, Phrases.getPhrase22(),877, False))
+thoughts.append(OneThought(200, Phrases.getPhrase23(),500, True))
 
-production = True
-iOffset = 2067 if production else 0
+production =  True
+iOffset = 1496 if production else 0
 
-dOffset = 600
+dOffset = 500
 for i in range(0,dOffset):
 	im = Image.new("RGBA",(1280,720),"white")
-	base = Image.open("./images/rollingeyes/image"+ "{:02d}".format(max(min(i-30,56),0)) +".png")
+	if(i<=69):
+		base = Image.open("./images/pensativo/image{}.png".format(max(min(i-0,39),0)))
+	else:
+		base = Image.open("base.png");
 	im.paste(base,(0,0))
 	for thought in thoughts:
 		thought.draw(im)

@@ -7,6 +7,13 @@ import random
 class RCRectengular:
 	@staticmethod
 	def draw(d, rec, radius, p):
+		d.rectangle((rec[0]+radius,rec[1],rec[2]-radius,rec[3]),None, aggdraw.Brush("white",255))
+		d.rectangle((rec[0],rec[1]+radius,rec[0]+radius,rec[3]-radius),None, aggdraw.Brush("white",255))
+		d.rectangle((rec[2],rec[1]+radius,rec[2]-radius,rec[3]-radius),None, aggdraw.Brush("white",255))
+		d.pieslice((rec[0],rec[1],rec[0]+2*radius,rec[1]+2*radius),90,180,None, aggdraw.Brush("white",255))
+		d.pieslice((rec[2]-2*radius,rec[1],rec[2],rec[1]+2*radius),0,90,None, aggdraw.Brush("white",255))
+		d.pieslice((rec[0],rec[3]-2*radius,rec[0]+2*radius,rec[3]),180,270,None, aggdraw.Brush("white",255))
+		d.pieslice((rec[2]-2*radius,rec[3]-2*radius,rec[2],rec[3]),270,360,None, aggdraw.Brush("white",255))
 		d.line((rec[0]+radius,rec[1],rec[2]-radius,rec[1]),p)
 		d.line((rec[0]+radius,rec[3],rec[2]-radius,rec[3]),p)
 		d.line((rec[0],rec[1]+radius,rec[0],rec[3]-radius),p)
@@ -269,4 +276,5 @@ class ThoughtfulTransition:
 		self.bubble1.draw(im)
 		self.bubble2.draw(im)
 		self.bubble3.draw(im)
-		self.transcendingBubble.draw(im)			
+		self.transcendingBubble.draw(im)	
+
