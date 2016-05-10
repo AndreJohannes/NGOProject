@@ -29,6 +29,9 @@ def zapping(image1, image2, imax, callback):
 
 def pageflip(image1, image2, imax, callback):
 
+	
+	image1 = image1.convert("RGBA")
+	image2 = image2.convert("RGBA")
 	rect_right = [[640,0],[1280,0],[1280,720],[640,720]]
 	rect_left = [[0,0],[640,0],[640,720],[0,720]]
 	imax = imax/2

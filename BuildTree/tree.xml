@@ -4,19 +4,19 @@
 	<node pos_x="329"  pos_y="269" girth="17" />
 	<node pos_x="329"  pos_y="259" girth="15" />
 	<node pos_x="316"  pos_y="251" girth="10">   
-		<node pos_x="291"  pos_y="241"  girth="7">
-			<node pos_x="265"  pos_y="226"  girth="7">
+		<node pos_x="291"  pos_y="241"  girth="7" leave="true">
+			<node pos_x="265"  pos_y="226"  girth="7" leave="true">
 				<node	pos_x="216"  pos_y="232"  girth="5" leave="true">
 					<node pos_x="180" pos_y="243"  girth="3" leave="true" />
 				</node>
-				<node pos_x="247" pos_y="207"  girth="6">
+				<node pos_x="247" pos_y="207"  girth="6" leave="true">
 					<node pos_x="227"  pos_y="157"  girth="5" leave="true">
 						<node pos_x="221" pos_y="130"  girth="3" leave="true"/>
 					</node>	
 				</node>		
 			</node>
-			<node pos_x="268"  pos_y="202"  girth="7">   
-				<node pos_x="261" pos_y="154"  girth="7">
+			<node pos_x="268"  pos_y="202"  girth="7" leave="true">    
+				<node pos_x="261" pos_y="154"  girth="7" leave="true">
 					<node pos_x="239"  pos_y="121"  girth="5" leave="true">
 					 	<node pos_x="219"  pos_y="92"  girth="3" leave="true"/>
 						<node pos_x="247"  pos_y="67"   girth="3" leave="true"/>
@@ -24,19 +24,19 @@
 		 		</node>	
 		 	</node>	
 		</node>
-		<node pos_x="289"  pos_y="229"  girth="7"> 
-			<node pos_x="264"  pos_y="208"  girth="7">
+		<node pos_x="289"  pos_y="229"  girth="7" leave="true">  
+			<node pos_x="264"  pos_y="208"  girth="7" leave="true">
 				<node pos_x="227"  pos_y="204"  girth="5" leave="true">
 					<node pos_x="196"  pos_y="206"  girth="3" leave="true"/>
 				</node>	
-				<node pos_x="241"  pos_y="188" girth="7">
+				<node pos_x="241"  pos_y="188" girth="7" leave="true">
 					<node pos_x="215"  pos_y="137"  girth="5" leave="true">
 						<node pos_x="204"  pos_y="104"  girth="3" leave="true"/>
 					</node>	
 				</node>	
 			</node> 
-			<node pos_x="275"  pos_y="189" girth="7">
-				<node pos_x="269"  pos_y="146" girth="7"> 
+			<node pos_x="275"  pos_y="189" girth="7" leave="true">
+				<node pos_x="269"  pos_y="146" girth="7" leave="true"> 
 					<node pos_x="257"  pos_y="117" girth="5" leave="true">
 						<node pos_x="259"  pos_y="58" girth="3" leave="true"/>
 						<node pos_x="239"  pos_y="74" girth="3" leave="true"/>	
@@ -46,20 +46,20 @@
 		</node>
 	</node>
 	<node pos_x="345"  pos_y="251" girth="10">
-		<node pos_x="370"  pos_y="238" girth="7">
+		<node pos_x="370"  pos_y="238" girth="7" leave="true">
 			<node pos_x="392"  pos_y="256" girth="3" leave="true"/>
-			<node pos_x="408"  pos_y="216" girth="7">
+			<node pos_x="408"  pos_y="216" girth="7" leave="true">
 				<node pos_x="463"  pos_y="216" girth="5" leave="true">
 					<node pos_x="502"  pos_y="223" girth="3" leave="true"/>
 				</node>
-				<node pos_x="432"  pos_y="195" girth="7">
+				<node pos_x="432"  pos_y="195" girth="7" leave="true">
 					<node pos_x="456"  pos_y="154" girth="5" leave="true">
 						<node pos_x="470"  pos_y="111" girth="3" leave="true"/>
 					</node>
 				</node>
 			</node>
-			<node pos_x="400"  pos_y="196" girth="7">
-				<node pos_x="408"  pos_y="151" girth="7">
+			<node pos_x="400"  pos_y="196" girth="7" leave="true">
+				<node pos_x="408"  pos_y="151" girth="7" leave="true">
 					<node pos_x="429"  pos_y="119" girth="5" leave="true">
 						<node pos_x="456"  pos_y="82" girth="3" leave="true"/>
 						<node pos_x="423"  pos_y="63" girth="3" leave="true"/>
@@ -69,18 +69,18 @@
 		</node>
 	</node>
 	<node pos_x="336"  pos_y="254" girth="10">
-		<node pos_x="347"  pos_y="239" girth="7">
-			<node pos_x="351"  pos_y="205" girth="7">
+		<node pos_x="347"  pos_y="239" girth="7" leave="true">
+			<node pos_x="351"  pos_y="205" girth="7" leave="true">
 				<node pos_x="365"  pos_y="195" girth="5" leave="true">
 					<node pos_x="377"  pos_y="195" girth="3" leave="true"/>
 				</node>
-				<node pos_x="350"  pos_y="179" girth="7">
+				<node pos_x="350"  pos_y="179" girth="7" leave="true">
 					<node pos_x="348"  pos_y="143" girth="5" leave="true">
 						<node pos_x="354"  pos_y="72" girth="3" leave="true"/>
 					</node>
 				</node>
 			</node>			
-			<node pos_x="373"  pos_y="214" girth="7">
+			<node pos_x="373"  pos_y="214" girth="7" leave="true">
 				<node pos_x="391"  pos_y="174" girth="5" leave="true">
 					<node pos_x="402"  pos_y="129" girth="3" leave="true" />
 				</node>
@@ -88,8 +88,8 @@
 		</node>	
 	</node>
 	<node pos_x="332"  pos_y="249" girth="10">
-		<node pos_x="342"  pos_y="223" girth="7">
-			<node pos_x="352"  pos_y="183" girth="7">
+		<node pos_x="342"  pos_y="223" girth="7" leave="true">
+			<node pos_x="352"  pos_y="183" girth="7" leave="true">
 				<node pos_x="355"  pos_y="134" girth="5" leave="true">
 					<node pos_x="360"  pos_y="93" girth="3" leave="true"/>
 					<node pos_x="367"  pos_y="98" girth="5" leave="true">
