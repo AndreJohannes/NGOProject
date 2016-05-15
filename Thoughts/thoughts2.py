@@ -16,6 +16,7 @@ class OneThought:
 		self.bubble2 = Tools.TimedBubble(pos_x,318,15,startTime,startTime+35,20,15)
 		self.bubble3 = Tools.TimedBubble(pos_x,268,20,startTime,startTime+35,10,25)
 		self.rectangualar = Tools.MorphingTextBox(image, pos_x,268,20,startTime+35)
+		self.brush = aggdraw.Brush((248,240,118),255)
 
 	def inc(self):
 		self.bubble1.inc()
@@ -27,7 +28,7 @@ class OneThought:
 		self.bubble1.draw(im)
 		self.bubble2.draw(im)
 		self.bubble3.draw(im)
-		self.rectangualar.draw(im)	
+		self.rectangualar.draw(im, self.brush)	
 
 
 class ThoughtfulTransition:
@@ -48,7 +49,7 @@ class ThoughtfulTransition:
 		self.bubble1.draw(im)
 		self.bubble2.draw(im)
 		self.bubble3.draw(im)
-		self.transcendingBubble.draw(im)	
+		self.transcendingBubble.draw(im)
 
 base = Image.open("./base.png")
 d = aggdraw.Draw(base)
@@ -61,13 +62,13 @@ thoughts.append(OneThought(30, Phrases.getPhrase19(),945))
 thoughts.append(OneThought(60, Phrases.getPhrase20(),300))
 
 pensombre = Image.open("./pensombre.png")
-thoughts.append(ThoughtfulTransition(110, pensombre, 945))
+#thoughts.append(ThoughtfulTransition(110, pensombre, 945))
 
 
 production = True
-iOffset = 1256 if production else 0
-
-for i in range(0,240):
+iOffset = 1126 if production else 0
+t= 160
+for i in range(0,t):
 	im = Image.new("RGBA",(1280,720),"white")
 	im.paste(base,(0,0))
 	for thought in thoughts:
@@ -78,4 +79,21 @@ for i in range(0,240):
 	print "saving image:" , i + iOffset 
 	im.save("./images/image" + str(i+iOffset) + ".png","png") if not production else im.save("../Movie/images/image" + str(i+iOffset) + ".png","png")
 
+dic =  {10:1221,11:1196,12:1153,13:1096,14:1022,15:952,16:874,17:797,18:724,19:646,20:562,21:476,22:391,23:297,24:208,25:80}
+
+for i in range(t,t+25):
+	im = Image.open("../Pensombre/images/slider/image{:02d}.png".format(t+25-i))
+	im = im.convert("RGBA")
+	if(dic.has_key(t+25-i)):
+		mask = Image.new("L",(1280,720),"white")
+		mask.paste("black",(0,0,dic[t+25-i],720))
+		im.paste(base,(0,0),mask)
+	#im.paste(base,(0,0))
+	for thought in thoughts:
+		thought.draw(im)
+		thought.inc()
+	d = ImageDraw.Draw(im)
+	d.text((0,0),str(i+iOffset),"black")
+	print "saving image:" , i + iOffset 
+	im.save("./images/image" + str(i+iOffset) + ".png","png") if not production else im.save("../Movie/images/image" + str(i+iOffset) + ".png","png")
  	

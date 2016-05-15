@@ -16,6 +16,7 @@ class OneThought:
 		self.bubble2 = Tools.TimedBubble(pos_x,318,15,startTime,startTime+35,20,15)
 		self.bubble3 = Tools.TimedBubble(pos_x,268,20,startTime,startTime+35,10,25)
 		self.rectangualar = Tools.MorphingTextBox(image, pos_x,268,20,startTime+35)
+		self.brush = aggdraw.Brush((248,240,118),255)
 
 	def inc(self):
 		self.bubble1.inc()
@@ -27,7 +28,7 @@ class OneThought:
 		self.bubble1.draw(im)
 		self.bubble2.draw(im)
 		self.bubble3.draw(im)
-		self.rectangualar.draw(im)	
+		self.rectangualar.draw(im, self.brush)	
 
 class OneFlag:
 
@@ -89,8 +90,8 @@ thoughts.append(OneThought(270, Phrases.getPhrase11(),945))
 thoughts.append(OneThought(300, Phrases.getPhrase12(),380))
 thoughts.append(OneThought(330, Phrases.getPhrase13(),945))
 thoughts.append(OneThought(360, Phrases.getPhrase14(),380))
-thoughts.append(OneThought(390, Phrases.getPhrase15(),945))
-thoughts.append(OneThought(420, Phrases.getPhrase16(),380))
+#thoughts.append(OneThought(390, Phrases.getPhrase15(),945))
+#thoughts.append(OneThought(420, Phrases.getPhrase16(),380))
 
 flags = [OneFlag(160, 230, "america", 462, 349)]
 flags.append(OneFlag(190, 260, "mexican", 826, 349))
@@ -102,7 +103,7 @@ flags.append(OneFlag(340, 410, "japanese", 462, 349))
 flags.append(OneFlag(370, 440, "kiwi", 826, 349))
 
 pensombre = Image.open("./pensombre.png")
-thoughts.append(ThoughtfulTransition(470, pensombre, 380))
+thoughts.append(ThoughtfulTransition(410, pensombre, 380))
 
 
 production =  not False

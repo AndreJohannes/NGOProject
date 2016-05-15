@@ -71,7 +71,16 @@ for i in range(0, 200):
 	leave_count = 0
 	for leave in paths:
 		leave_count += 1
-		size = max(0,min((i-getRetardation(leave_count))/99.,1))
+		if(leave_count==4):
+			size = max(0,min((i-getRetardation(leave_count))/49.,1.3))
+		elif(leave_count==6):
+			size = max(0,min((i-getRetardation(leave_count))/49.,1.3))
+		elif(leave_count==8):
+			size = max(0,min((i-getRetardation(leave_count))/49.,1.2))
+		elif(leave_count==10):
+			size = max(0,min((i-getRetardation(leave_count))/49.,1.3))
+		else:
+			size = max(0,min((i-getRetardation(leave_count))/99.,1))
 		path = aggdraw.Path()
 
 		x_start = leave[0].start.real

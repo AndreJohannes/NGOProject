@@ -6,10 +6,10 @@ import Python.tools as Tools
 import Python.transitions as Transitions
 
 
-istart = 510
+istart = 390
 
-production =not False
-iOffset = 2046+istart if production else istart
+production = not False
+iOffset = 1640+istart if production else istart
 
 dOffset = 70
 for i in range(0, dOffset):

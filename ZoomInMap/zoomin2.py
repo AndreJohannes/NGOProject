@@ -7,9 +7,9 @@ import Python.transitions as Transitions
 
 
 production = not False
-iOffset = 2046+270 if production else 270
+iOffset = 1640+240 if production else 240
 
-dOffset = 80
+dOffset = 50
 def callback(im, i):
 	d = ImageDraw.Draw(im)
 	d.text((0,0),str(i+iOffset),"black")

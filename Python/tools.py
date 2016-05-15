@@ -6,14 +6,16 @@ import random
 
 class RCRectengular:
 	@staticmethod
-	def draw(d, rec, radius, p):
-		d.rectangle((rec[0]+radius,rec[1],rec[2]-radius,rec[3]),None, aggdraw.Brush("white",255))
-		d.rectangle((rec[0],rec[1]+radius,rec[0]+radius,rec[3]-radius),None, aggdraw.Brush("white",255))
-		d.rectangle((rec[2],rec[1]+radius,rec[2]-radius,rec[3]-radius),None, aggdraw.Brush("white",255))
-		d.pieslice((rec[0],rec[1],rec[0]+2*radius,rec[1]+2*radius),90,180,None, aggdraw.Brush("white",255))
-		d.pieslice((rec[2]-2*radius,rec[1],rec[2],rec[1]+2*radius),0,90,None, aggdraw.Brush("white",255))
-		d.pieslice((rec[0],rec[3]-2*radius,rec[0]+2*radius,rec[3]),180,270,None, aggdraw.Brush("white",255))
-		d.pieslice((rec[2]-2*radius,rec[3]-2*radius,rec[2],rec[3]),270,360,None, aggdraw.Brush("white",255))
+	def draw(d, rec, radius, p, b = None):
+		if b==None:
+			b = aggdraw.Brush("white",255);
+		d.rectangle((rec[0]+radius,rec[1],rec[2]-radius,rec[3]),None, b)
+		d.rectangle((rec[0],rec[1]+radius,rec[0]+radius,rec[3]-radius),None, b)
+		d.rectangle((rec[2],rec[1]+radius,rec[2]-radius,rec[3]-radius),None, b)
+		d.pieslice((rec[0],rec[1],rec[0]+2*radius,rec[1]+2*radius),90,180,None, b)
+		d.pieslice((rec[2]-2*radius,rec[1],rec[2],rec[1]+2*radius),0,90,None, b)
+		d.pieslice((rec[0],rec[3]-2*radius,rec[0]+2*radius,rec[3]),180,270,None, b)
+		d.pieslice((rec[2]-2*radius,rec[3]-2*radius,rec[2],rec[3]),270,360,None, b)
 		d.line((rec[0]+radius,rec[1],rec[2]-radius,rec[1]),p)
 		d.line((rec[0]+radius,rec[3],rec[2]-radius,rec[3]),p)
 		d.line((rec[0],rec[1]+radius,rec[0],rec[3]-radius),p)
@@ -90,22 +92,26 @@ class MorphingTextBox:
 		self.randomShift = random.randint(-10,10)
 		self.hover = hover
 
-	def draw(self, im):
+	def draw(self, im, b = None):
+		if b==None:
+			b = aggdraw.Brush("white",255);
 		if self.counter < self.startTime: 
 			return 
 		dt = self.counter  - self.startTime
 		y = int(self.pos_y + .2*(dt)) if self.hover else self.pos_y - 2*dt
 		x = self.pos_x - 2*self.randomShift*math.sqrt((dt))
 		radius = int(max(self.radius - 2*dt / 2.,5))
-		hdx = min(int(self.radius + 2*dt / 2.),(self.image.size[0]+radius)/2)
-		hdy = min(int(self.radius + 2*dt / 4.),(self.image.size[1]+radius)/2)
+		hdx = min(int(self.radius + 8*dt / 2.),(self.image.size[0]+radius)/2)
+		hdy = min(int(self.radius + 8*dt / 4.),(self.image.size[1]+radius)/2)
 		d = aggdraw.Draw(im)
 		p = aggdraw.Pen("black", 2.5)
-		RCRectengular.draw(d, (x - hdx, y - hdy , x + hdx , y + hdy), radius, p)	
+		RCRectengular.draw(d, (x - hdx, y - hdy , x + hdx , y + hdy), radius, p, b)	
 		d.flush()
 		textbox = self.image.resize((2*hdx-2*radius,2*hdy-2*radius), Image.ANTIALIAS)
-		color = 255 - dt*5
-		im.paste((color,color,color,256),(int(x)-hdx+radius,y-hdy+radius),textbox.convert("L"))
+		textMask = Image.new("L",textbox.size,"black")
+		color =  dt*10
+		textMask.paste((color),(0,0),textbox)
+		im.paste("black",(int(x)-hdx+radius,y-hdy+radius),textMask)
 
 	def inc(self):
 		self.counter += 1
@@ -179,7 +185,7 @@ class MovingBubble:
 		d = aggdraw.Draw(im)
 		p = aggdraw.Pen("black", 2.5)
 		color = max(0,int(255-(255*(self.counter-self.startTime))/10)) 
-		p = aggdraw.Pen((color, color, color), 2.5);
+		p = aggdraw.Pen((int(color*248/255.), int(color*240/255.), int(color*118/255.)), 2.5);
 		d.ellipse((self.pos_x-self.radius, self.pos_y-self.radius, 
 			self.pos_x+self.radius,self.pos_y+self.radius), p)
 		d.flush()

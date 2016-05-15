@@ -23,15 +23,15 @@ positions.append((409,304))
 positions.append((723,372))
 positions.append((540,290))
 
-textMasks  = [Phrases.getPhrase37(1000)]
-textMasks.append(Phrases.getPhrase38(1000)) 
-textMasks.append(Phrases.getPhrase39(1000))
-textMasks.append(Phrases.getPhrase40(1000))
-textMasks.append(Phrases.getPhrase41(1000))
-textMasks.append(Phrases.getPhrase42(1000))
-textMasks.append(Phrases.getPhrase43(1000))
-textMasks.append(Phrases.getPhrase44(1000))
-textMasks.append(Phrases.getPhrase45(1000))
+textMasks  = [Phrases.getPhrase37()]
+textMasks.append(Phrases.getPhrase38()) 
+textMasks.append(Phrases.getPhrase39())
+textMasks.append(Phrases.getPhrase40())
+textMasks.append(Phrases.getPhrase41())
+textMasks.append(Phrases.getPhrase42())
+textMasks.append(Phrases.getPhrase43())
+textMasks.append(Phrases.getPhrase44())
+textMasks.append(Phrases.getPhrase45())
 
 iOffset = 0
 
@@ -39,11 +39,12 @@ for i in range(0,150):
 	im = base.copy()
 	textMask = Phrases.getPhrase36(i)
 	im.paste("black",(775, 135),textMask)
-	if i>100:
-		sz = min(i-100,35)
+	d = 0
+	for position in positions:
+		sz = max(min(i - 70 +d, 35),0)
 		app = apple.resize((sz,sz),Image.ANTIALIAS)
-		for position in positions:
-			im.paste(app,position,app)
+		im.paste(app,(position[0]-sz/2,position[1]),app)
+		d += 5
 	im.save("./images/image{}.png".format(i+iOffset),"png")
 
 iOffset += 150
@@ -62,10 +63,10 @@ for position in positions:
 		for appl in positions:
 			ax = appl[0]
 			ay = appl[1] 
-			pos=(apple_dx - 5*(x-ax),apple_dy - 5*(y-ay))
+			pos=(apple_dx - 5*(x-ax)-10,apple_dy - 5*(y-ay))
 			awt = apple.copy()
 			textMask = textMasks[c]
-			awt.paste("black",(175-textMask.size[0]/2, 150),textMask)
+			awt.paste("white",(165-textMask.size[0]/2, 150),textMask)
 			area.paste(awt,pos, apple)
 			c += 1
 		im2.paste(area,(x-size,y-size),mask)

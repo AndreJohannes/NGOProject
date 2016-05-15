@@ -10,10 +10,10 @@ im = Image.open("./base2.png")
 im = im.convert("L")
 im = ImageOps.invert(im)
 
-istart = 1500
+istart = 1455
 
 production = not False
-iOffset = 2806+istart if production else istart
+iOffset = 2280+istart if production else istart
 
 for i in range(0, 150):
 	base = Image.new("RGBA",(1280,720),"white")
@@ -34,12 +34,13 @@ for i in range(0, 150):
 
 iOffset += 150
 
-for i in range(0, 115):
+for i in range(0, 90):
 	base = Image.new("RGBA",(1280,720),"white")
-	im = Image.open("../BuildTree/images/image{}.png".format(150)) 
+	im = Image.open("../BuildTree/images/image{}.png".format(min(i/2+150, 199))) 
 	#im = im.convert("L")
 	#im = ImageOps.invert(im)
-	base.paste(im,(0,0))
+	mask = Image.new("L",(1280,720),max(255-i,165))
+	base.paste(im,(0,0),mask)
 	textMask = Phrases.getPhrase30(i)
 	base.paste("black",(50, 300-i),textMask)
 	d = ImageDraw.Draw(base)
@@ -47,24 +48,25 @@ for i in range(0, 115):
 	print "saving image:" , i + iOffset 
 	base.save("./images/image" + str(i+iOffset) + ".png","png") if not production else base.save("../Movie/images/image" + str(i+iOffset) + ".png","png")	
 
-iOffset += 115
-for i in range(0, 90):
+iOffset += 90
+for i in range(0, 50):
 	base = Image.new("RGBA",(1280,720),"white")
-	im = Image.open("../BuildTree/images/image{}.png".format(min(i+150, 199))) 
+	im = Image.open("../BuildTree/images/image{}.png".format(min(90/2+i/4+150, 199))) 
 	#im = im.convert("L")
 	#im = ImageOps.invert(im)
-	base.paste(im,(0,0))
-	color = 255.*(1-(i-0)/99.)
+	mask = Image.new("L",(1280,720),165)
+	base.paste(im,(0,0),mask)
+	color = 255.*(1-(i-0)/49.)
 	textMask = Phrases.getPhrase30(1000)
 	textMask2 = Image.new("L",textMask.size,"black")
 	textMask2.paste((color),(0,0),textMask)
-	base.paste("black",(50, 185-i),textMask2)
+	base.paste("black",(50, 210-i),textMask2)
 	d = ImageDraw.Draw(base)
 	d.text((0,0),str(i + iOffset),"black")
 	print "saving image:" , i + iOffset 
 	base.save("./images/image" + str(i+iOffset) + ".png","png") if not production else base.save("../Movie/images/image" + str(i+iOffset) + ".png","png")	
 
-iOffset += 90
+iOffset += 50
 def callback(im, i):
 	d = ImageDraw.Draw(im)
 	d.text((0,0),str(i+iOffset),"black")

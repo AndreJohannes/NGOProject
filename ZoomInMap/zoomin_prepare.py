@@ -29,16 +29,16 @@ end = [530, 170, 660, 240]
 #  	print "save image", str(i)	
 #  	call(args)
 
-# for i in range(0,170):
-# 	k = 255.* max(i-130,0) / 39.;
-# 	image1 = Image.open("./images/preps/image{}a.png".format(i))
-# 	image2 = Image.open("./images/preps/image{}b.png".format(i))
+for i in range(0,170):
+ 	k = 255.* max(i-0,0) / 169.;
+ 	image1 = Image.open("./images/preps/image{}a.png".format(i))
+ 	image2 = Image.open("./images/preps/image{}b.png".format(i))
 
-# 	mask = Image.new("L",(1280,720),k)
+ 	mask = Image.new("L",(1280,720),k)
 
-# 	image1.paste(image2,(0,0), mask)
+ 	image1.paste(image2,(0,0), mask)
 
-# 	image1.save("./images/preps/image{}.png".format(i),"png")
+ 	image1.save("./images/preps/image{}.png".format(i),"png")
 
 
 args = ["inkscape", "Hidalgo.svg", 

@@ -3,10 +3,12 @@ from PIL import ImageDraw
 import aggdraw
 import math
 
-production = not False
+production = False
 
 im = Image.new("RGBA",(1280,720),"white")
 
+
+title = Image.open("./title.png")
 coastLines = Image.open("../Images/world.png")
 
 inicio = [190,700,10]
@@ -37,6 +39,7 @@ for i in range(0,120):
 	im.save("./images/image" + str(i) + ".png","png") if not production else im.save("../Movie/images/image" + str(i) + ".png","png")
 
 world = circles[3]
+print world
 circles.remove(world)
 dRadius = 0;
 counter =0;
@@ -52,7 +55,7 @@ for i in range(120,300):
 		d.ellipse((pos_x-radius, pos_y-radius, pos_x+radius, pos_y+radius), p)
 		circle[0]+= 1.25 + radius/10
 		circle[1]-= 0.67 + radius*radius/500
-		circle[2]+=.4
+		circle[2]+= .4
 	d.flush()
 	pos_x = (1-frac)*world[0]+(frac)*1280/2.
 	pos_y = (1-frac)*world[1]+(frac)*720/2.
@@ -70,8 +73,11 @@ for i in range(120,300):
 	counter +=1;
 	d.ellipse((int(pos_x-radius), int(pos_y-radius), int(pos_x+radius), int(pos_y+radius)),p)	
 	d.flush()
+	if (i>230):
+		mask = Image.new("L",title.size,min(5*(i-230),255))
+		im.paste(title,(0,0),mask)
 	d = ImageDraw.Draw(im)
-	d.text((0,0),str(i+120),"black")
+	d.text((0,0),str(i),"black")
 	im.save("./images/image" + str(i) + ".png","png") if not production else im.save("../Movie/images/image" + str(i) + ".png","png")
 	
 world = [pos_x, pos_y, radius]

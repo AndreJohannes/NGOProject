@@ -13,33 +13,34 @@ import Python.transitions as Transitions
 class OneThought:
 
 	def __init__(self, startTime, image, pos_x, left):
-		self.bubble1 = Tools.MovingBubble(pos_x,163,10,startTime, None, left)
-		self.bubble2 = Tools.MovingBubble(pos_x,163,10,startTime+30, None, left)
-		self.bubble3 = Tools.MovingBubble(pos_x,163,10,startTime+60, startTime + 80, left)
+		self.bubble1 = Tools.MovingBubble(pos_x,163,10,startTime, startTime+20, left)
+		##self.bubble2 = Tools.MovingBubble(pos_x,163,10,startTime+30, None, left)
+		##self.bubble3 = Tools.MovingBubble(pos_x,163,10,startTime+60, startTime + 80, left)
 		pos_x += -100 if left else 100
-		self.rectangualar = Tools.MorphingTextBox(image, pos_x,139,20,startTime+80, True)
+		self.rectangualar = Tools.MorphingTextBox(image, pos_x,139,20,startTime+20, True)
 
 	def inc(self):
 		self.bubble1.inc()
-		self.bubble2.inc()
-		self.bubble3.inc()
+		##self.bubble2.inc()
+		##self.bubble3.inc()
 		self.rectangualar.inc()
 
 	def draw(self, im):
 		self.bubble1.draw(im)
-		self.bubble2.draw(im)
-		self.bubble3.draw(im)
+		##self.bubble2.draw(im)
+		##self.bubble3.draw(im)
 		self.rectangualar.draw(im)	
 
 
 thoughts = [OneThought(0, Phrases.getPhrase21(),500, True)]
-thoughts.append(OneThought(100, Phrases.getPhrase22(),877, False))
-thoughts.append(OneThought(200, Phrases.getPhrase23(),500, True))
+thoughts.append(OneThought(60, Phrases.getPhrase22a(),877, False))
+thoughts.append(OneThought(120, Phrases.getPhrase22b(),500, True))
+thoughts.append(OneThought(180, Phrases.getPhrase23(),877, False))
 
 production =  True
-iOffset = 1496 if production else 0
+iOffset = 1310 if production else 0
 
-dOffset = 500
+dOffset = 280
 for i in range(0,dOffset):
 	im = Image.new("RGBA",(1280,720),"white")
 	if(i<=69):

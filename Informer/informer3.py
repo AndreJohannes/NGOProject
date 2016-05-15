@@ -10,10 +10,10 @@ im = Image.open("./base2.png")
 im = im.convert("L")
 im = ImageOps.invert(im)
 
-istart = 1280
+istart = 1235
 
-production = not False
-iOffset = 2806+istart if production else istart
+production =  not False
+iOffset = 2280+istart if production else istart
 
 def callback(im, i):
 	d = ImageDraw.Draw(im)

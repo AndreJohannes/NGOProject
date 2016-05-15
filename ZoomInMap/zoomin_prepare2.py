@@ -6,7 +6,7 @@ start = [530, 170, 660, 240]
 end = [590,190, 640, 220]
 
 
-iOffset = 510
+iOffset = 390
 
 for i in range(0,70):
 	
