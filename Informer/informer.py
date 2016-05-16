@@ -21,7 +21,6 @@ for i in range(0, 470):
 	base = Image.new("RGBA",(1280,720),"white")
 	base.paste((color,color,color),(0,0),im)
 
-
 	if (i>420):
 		color = 255.*(1-(i-420)/49.)
 		textMask = Phrases.getPhrase26(1000)

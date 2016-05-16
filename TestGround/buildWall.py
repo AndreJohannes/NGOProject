@@ -6,12 +6,12 @@ class wall:
 
 	def __init__(self,start):
 		self.startTime = start
-		self.stopTime = start + 20
+		self.stopTime = start + 35
 
 	def draw(self, frame, image):
 		if(frame < self.startTime or frame >= self.stopTime):
  			return
- 		idx = frame - self.startTime
+ 		idx = (frame - self.startTime)/2
 		im = Image.open("../WallBuilding/images/wall"+ "{:02d}".format(idx) +".png")
 		im = im.convert("RGBA");
 		image.paste(im,(0,0),im)
