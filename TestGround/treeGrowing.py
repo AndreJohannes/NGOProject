@@ -80,13 +80,14 @@ class cultivate:
 
 	def __init__(self, start):
 		self.startTime = start
-		self.stopTime = start + 1350
+		self.stopTime = start + 420
 		self.list = []
 		self.list.append(seeding(start))
 		self.list.append(watering(start + 50))
 		self.list.append(growing(start + 100))
 		self.list.append(text(start + 80,70,50,Phrases.getPhrase29))
 		self.list.append(text(start + 280,70,50,Phrases.getPhrase30))
+		self.list.append(Transitions.pageFlip( Image.open("./images/base7.png"), Image.open("./images/base8.png").convert("RGBA"),start+400,20))
 
 	def draw(self, frame, image):
 		if(frame < self.startTime or frame >= self.stopTime):

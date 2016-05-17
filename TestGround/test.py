@@ -13,11 +13,16 @@ import penMujer
 import showMap
 import informer
 import treeGrowing
+import leafGrowing
+import dreamOfFruits
+import stillWorking
+import callForAction
+import majesticTree
 
 class Main:
 
 	def __init__(self):
-		self.frame = 2790
+		self.frame = 4560
 		self.save = False
 		self.photo_image = None
 		self.list = []
@@ -36,6 +41,11 @@ class Main:
 		self.list.append(showMap.journey(966))
 		self.list.append(informer.inform(1626))
 		self.list.append(treeGrowing.cultivate(2796))
+		self.list.append(leafGrowing.evolve(3215))
+		self.list.append(dreamOfFruits.evolve(3355))
+		self.list.append(stillWorking.evolve(3825))
+		self.list.append(callForAction.evolve(3950))
+		self.list.append(majesticTree.evolve(4565))
 		##for i in range(0,200):
 		##	self.list.append(Obj())
 
