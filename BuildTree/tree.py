@@ -11,7 +11,7 @@ class Node:
 		self.children = []
 		self.girth = girth
 		self.has_leave = leave
-		self.leave_size = 20
+		self.leave_size = 40
 		self.leave_color = (random.randint(40,180), random.randint(120,250), random.randint(0,50))
 		self._absolut_position = absolut_position
 		if parent is None:
@@ -76,9 +76,11 @@ def paint_leaves(parent, offset, im):
 	for node in parent.children:
 		if node.has_leave:
 			d = aggdraw.Draw(im)
-			p = aggdraw.Pen(node.leave_color, 1)
-			b = aggdraw.Brush(node.leave_color,255)
-			for i in range(0,16):
+			leaveCount = int(node.leave_size*36/40.)
+			for i in range(0, leaveCount):
+				color = (random.randint(40,180), random.randint(120,250), random.randint(0,50))
+				p = aggdraw.Pen(color, 1)
+				b = aggdraw.Brush(color,255)
 				dx = random.randint(-int(node.leave_size), int(node.leave_size))
 				dy = random.randint(-int(node.leave_size), int(node.leave_size))
 				d.ellipse((dx+349+node._absolut_position[0]-5,dy+96+node._absolut_position[1]-5,
