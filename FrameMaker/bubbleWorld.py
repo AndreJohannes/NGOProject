@@ -1,6 +1,12 @@
 import aggdraw
 from PIL import Image
 
+import titleOverlay
+import flippingWorld
+import walkIn
+import buildWall
+import thinking
+
 class bubble:
 
 	def __init__(self,start, fading, length):
@@ -69,3 +75,26 @@ class worldBubble:
 		p = aggdraw.Pen("black", pen_size)
 		d.ellipse((int(pos_x-radius), int(pos_y-radius), int(pos_x+radius), int(pos_y+radius)), p)
 		d.flush()
+
+class evolve:
+
+	def __init__(self, start):
+		self.startTime = start
+		self.stopTime = start + 430
+		self.list = []
+		self.list.append(bubble(start + 0,120,200))
+		self.list.append(bubble(start + 25,95,200))
+		self.list.append(bubble(start + 51,69,200))
+		self.list.append(bubble(start + 77,43,43))
+		self.list.append(bubble(start + 103,17,200))
+		self.list.append(worldBubble(start + 120,180))
+		self.list.append(titleOverlay.title(start + 230,120,(0,0)))
+		self.list.append(flippingWorld.world(start + 300))
+		self.list.append(walkIn.walk(start + 300))
+		self.list.append(buildWall.wall(start + 396))
+
+	def draw(self, frame, image):
+		if(frame < self.startTime or frame >= self.stopTime):
+ 			return
+ 		for obj in self.list:
+ 			obj.draw(frame, image)

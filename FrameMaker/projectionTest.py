@@ -8,78 +8,74 @@ from Tools.flags import Flags
 import Tools.tools as Tools
 import Tools.transitions as Transitions
 import Tools.helpers as Helpers
-
-class perspective:
-
-	def project(self, position):
-		[x, y, z] = position
-		C = 1000.
-		return [640+ 5*x *C / (C + z), 460+ 5 * y * C /(C + z)]
-
-	def rotX(self, rad, position):
-		[x, y, z] = position
-		cos = math.cos(rad)
-		sin = math.sin(rad)
-		return [x, y*cos - z * sin, z*cos + y * sin]
-
-	def rotY(self, rad, position):
-		[x, y, z] = position
-		cos = math.cos(rad)
-		sin = math.sin(rad)
-		return [cos *x - sin *z , y, cos*z + sin*x]
+import animation3D.perspective as Perspective
+import animation3D.svgparser as SVGParser
 
 class walker:
 	def __init__(self):
-		self.image = Image.open("../WalkIn/images/walkin-0.png").convert("RGBA")
+		self.image = Image.open("./animation3D/walker/analy/frame{}.png".format(0)).convert("RGBA")
 
 	def draw(self, data, image, idx):
-		rect=[[0,0],[1280,0],[1280,590],[0,590]]
+		rect=[[0,0],[590,0],[590,590],[0,590]]
 		data =  Helpers.find_coeffs(data,rect).tolist()
-		im = Image.open("../WalkIn/images/walkin-{}.png".format(min(max(0, idx), 37))).convert("RGBA")
+		im = Image.open("./animation3D/walker/analy/frame{}.png".format(min(max(0, idx), 107))).convert("RGBA")
 		tm = im.transform((1280,720), Image.PERSPECTIVE, data, Image.BICUBIC)
 		image.paste(tm, (0,0), tm)
 
 class map:
 
 	def __init__(self):
-		self.image = Image.open("./test/map.png")
+		self.parser = SVGParser.svgParse("./animation3D/Hidalgo.svg")
 
-	def draw(self, data, image):
-		rect=[[0,0],[0,512],[512,512],[512,0]]
-		data =  Helpers.find_coeffs(data,rect).tolist()
-		tm = self.image.transform((1280,720), Image.PERSPECTIVE, data, Image.BICUBIC)
-		image.paste(tm, (0,0), tm)
+	def draw(self, caller, image):
+		canvas = aggdraw.Draw(image)
+		pen  = aggdraw.Pen("black", 0)
+		regions = [[2, aggdraw.Brush("grey",255)]]
+		regions.append([3,aggdraw.Brush((221, 63, 35),255)])
+		regions.append([4,aggdraw.Brush((170, 136, 0),255)])
+		regions.append([5,aggdraw.Brush((33,181,0),255)])
+		for region in regions:
+			brush = region[1]
+			area = self.parser.get_path(region[0])
+			path = []
+			for coord in area:
+				cc = caller([-100+coord[0],0,100-coord[1]])
+				path.append(cc[0])
+				path.append(cc[1])
+			canvas.polygon(path,pen, brush)
+		canvas.flush()
 
 class box:
 
 	def __init__(self, start):
 		self.startTime = start
-		self.perspective = perspective()
+		self.perspective = Perspective.perspective()
 		self.map = map()
 		self.walker = walker()
-		self.plane_map = [[-100,0,-100],[100,0,-100],[100,0,100],[-100,0,100]]
-		self.plane_walker1 = [[-100,-100,0],[100,-100,0],[100,0,0],[-100,0,0]]	
-		self.plane_walker2 = [[0,-100,-100],[0,-100,100],[0,0,100],[0,0,-100]]	
-
-		#self.planes.append([[-100,0,-100],[100,0,-100],[100,0,100],[-100,0,100]])
-		#self.planes.append([[-100,0,100],[100,0,100],[100,-100,100],[-100,-100,100]])
-		#self.planes.append([[100,0,100],[100,0,-100],[100,-100,-100],[100,-100,100]])
+		self.plane_walker1 = [[-85,-100,-9],[5,-100,-4],[5,0,-4],[-85,0,-9]]	
+		self.plane_walker2 = [[94,-100,9],[5,-100,-4],[5,0,-4],[94,0,9]]	
+		self.plane_walker3 = [[58,-100,69],[5,-100,-4],[5,0,-4],[58,0,69]]
 
 	def draw(self, frame, image):
+		image.paste((248,240,118),(0,0,1280,720))
 		idx = frame - self.startTime
-		plane = []
-		for point in self.plane_map:
-			plane.append(self.projectAndRotate(20, point))
-		self.map.draw(plane, image)
+		zoom = max(2, min(5., (idx/15.)))
+		ang = min(idx,70)
+		caller = lambda x : self.projectAndRotate(ang, x ,zoom)
+		self.map.draw(caller, image)
 		plane = []
 		for point in self.plane_walker1:
-			plane.append(self.projectAndRotate(20, point))
-		self.walker.draw(plane, image, idx/2)
+			plane.append(self.projectAndRotate(ang, point, zoom))
+		self.walker.draw(plane, image, idx)
 		plane = []
 		for point in self.plane_walker2:
-			plane.append(self.projectAndRotate(20, point))
-		self.walker.draw(plane, image, idx/2-10)
+			plane.append(self.projectAndRotate(ang, point, zoom))
+		self.walker.draw(plane, image, idx)
+		plane = []
+		for point in self.plane_walker3:
+			plane.append(self.projectAndRotate(ang, point, zoom))
+		self.walker.draw(plane, image, idx)
 
-	def projectAndRotate(self, idx, data):
-		return self.perspective.project(self.perspective.rotX(0.3,self.perspective.rotY(2*math.pi*idx/180.,data)))
+	def projectAndRotate(self, idx, data, zoom):
+		return self.perspective.project(self.perspective.rotX(math.pi*(90-idx)/180.,self.perspective.rotY(math.pi*0/180.,data)), zoom)
 

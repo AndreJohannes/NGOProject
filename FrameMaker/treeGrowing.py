@@ -45,9 +45,9 @@ class growing:
 		if(frame < self.startTime or frame >= self.stopTime):
  			return
 		idx = frame - self.startTime
- 		im = Image.open("../BuildTree/images/image{}.png".format(min(int(idx-idx*idx/980.), 199))) 
- 		if idx > 170:
- 			mask = Image.new("L",(1280,720),max(255-(idx-170),165))
+ 		im = Image.open("../BuildTree/images/image{}.png".format(min(int(1.5*idx-idx*idx/980.), 199))) 
+ 		if idx > 120:
+ 			mask = Image.new("L",(1280,720),max(255-(idx-120),165))
 			image.paste(im, (0,0),mask)
 		else:
 			image.paste(im, (0,0))	
@@ -80,14 +80,14 @@ class evolve:
 
 	def __init__(self, start):
 		self.startTime = start
-		self.stopTime = start + 420
+		self.stopTime = start + 340
 		self.list = []
 		self.list.append(seeding(start))
 		self.list.append(watering(start + 50))
 		self.list.append(growing(start + 100))
 		self.list.append(text(start + 80,70,50,Phrases.getPhrase29))
-		self.list.append(text(start + 280,70,50,Phrases.getPhrase30))
-		self.list.append(Transitions.pageFlip( Image.open("./images/base7.png"), Image.open("./images/base8.png").convert("RGBA"),start+400,20))
+		self.list.append(text(start + 200,70,50,Phrases.getPhrase30))
+		self.list.append(Transitions.pageFlip( Image.open("./images/base7.png"), Image.open("./images/base10.png").convert("RGBA"),start+320,20))
 
 	def draw(self, frame, image):
 		if(frame < self.startTime or frame >= self.stopTime):

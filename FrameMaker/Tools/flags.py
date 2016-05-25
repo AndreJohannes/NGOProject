@@ -26,6 +26,8 @@ class Flags:
 		self.dict["japanese"] = Flags.getJapaneseFlag()
 		self.dict["kiwi"] = Flags.getKiwiFlag()
 		self.dict["united"] = Flags.getUNFlag()
+		self.dict["dove"] = Flags.getDoveFlag()
+		self.dict["idove"] = Flags.getiDoveFlag()
 
 	def getFlag(self, name):
 		return self.dict[name]
@@ -113,4 +115,14 @@ class Flags:
 	@staticmethod
 	def getUNFlag():
 		image = Image.open("./Flags/unitedNations.png")
-		return image.resize((91,58)).convert("RGBA")		
+		return image.resize((91,58)).convert("RGBA")
+
+	@staticmethod
+	def getDoveFlag():
+		image = Image.open("./Flags/dove.png")
+		return image.resize((91,58), Image.ANTIALIAS).convert("RGBA")
+	
+	@staticmethod
+	def getiDoveFlag():
+		image = Image.open("./Flags/dove_inverse.png")
+		return image.resize((91,58),Image.ANTIALIAS).convert("RGBA")				

@@ -25,7 +25,7 @@ class Main:
 		for obj in self.list:
 			obj.draw(self.frame, image)
 		if self.save:
-			image.save("./test/frames/frame{}.png".format(self.frame),"png")	
+			image.save("./animation3D/frames/frame{}.png".format(self.frame),"png")	
 		d = ImageDraw.Draw(image)
 		d.text((0,0),"frame: {}".format(self.frame),"black")
 		d.text((0,8),"time: {}".format(datetime.timedelta(seconds=self.frame/25)),"black")
@@ -39,7 +39,7 @@ class Main:
 			for obj in self.list:
 				obj.draw(frame, image)
 			print "saving frame: {}".format(frame)
-			image.save("./test/frames/frame{}.png".format(frame),"png")	
+			image.save("./animation3D/frames/frame{}.png".format(frame),"png")	
 
 app = Tkinter.Tk()
 app.title("PSYDEH")

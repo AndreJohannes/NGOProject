@@ -42,6 +42,26 @@ class slider:
 			im.paste(base,(0, 0), mask)
 		image.paste(im,(0, 0))
 
+class text:
+
+	def __init__(self, start):
+		self.startTime = start
+		self.stopTime = start + 125
+
+	def draw(self, frame, image):	
+		if(frame < self.startTime or frame >= self.stopTime):
+ 			return
+		idx = frame - self.startTime
+		if idx > 100: 
+ 			color = 255.*(1.-(idx-100)/(25.))
+			textMask = Phrases.getPhrase46(idx)
+			textMask2 = Image.new("L",textMask.size,"black")
+			textMask2.paste((color),(0,0),textMask)
+			image.paste("black",(50, 300-idx), textMask2)
+ 		else:
+			textMask = Phrases.getPhrase46(idx)
+			image.paste("black",(50, 300-idx),textMask)
+
 class evolve:
 
 	def __init__(self, start):
@@ -50,6 +70,7 @@ class evolve:
 		self.list = []
 		self.list.append(labour(start))
 		self.list.append(slider(start + 100))
+		self.list.append(text(start))
 
 	def draw(self, frame, image):
 		if(frame < self.startTime or frame >= self.stopTime):

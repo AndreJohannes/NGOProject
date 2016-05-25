@@ -18,7 +18,7 @@ class blender:
 		if frame < self.startTime or frame >= self.stopTime:
 			return
 		idx = frame - self.startTime
-		color = (255. * idx) / (self.duration)	
+		color = (255. * idx) / (1.0*self.duration)
 		if self.image1 != None:
 			image.paste(self.image1, (0,0))
 		mask = Image.new("L",(1280,720),(color))
@@ -109,16 +109,22 @@ class pageFlip:
 		if idx <= self.duration/2:
 			pa = [[640, 0],[640+dx,360-dy],[640+dx,360+dy],[640,720]]
 			data =  helpers.find_coeffs(pa,rect_right).tolist()
-			tm = self.image1.transform((1280,720), Image.PERSPECTIVE,data,  Image.BICUBIC).crop((640,0,1280,720))
-			image.paste(self.image1.crop((0,0,640,720)),(0,0))
- 			image.paste(self.image2.crop((640,0,1280,720)),(640,0))
+			if self.image1 == None:
+				tm = image.transform((1280,720), Image.PERSPECTIVE,data,  Image.BICUBIC).crop((640,0,1280,720))
+			else:
+				tm = self.image1.transform((1280,720), Image.PERSPECTIVE,data,  Image.BICUBIC).crop((640,0,1280,720))
+			image.paste(self.image1.crop((0,0,640,720)) if self.image1 != None else image.crop((0,0,640,720)),(0,0))
+ 			image.paste(self.image2.crop((640,0,1280,720))  if self.image2 != None else image.crop((640,0,1280,720)),(640,0))
 			image.paste(tm,(640,0), tm)
 		else:
 			pa = [[640-dx,360-dy],[640,0],[640,720],[640-dx,360+dy]]
 			data =  helpers.find_coeffs(pa,rect_left).tolist()
-			tm = self.image2.transform((1280,720), Image.PERSPECTIVE,data,  Image.BICUBIC).crop((0,0,640,720))
-			image.paste(self.image1.crop((0,0,640,720)),(0,0))
- 			image.paste(self.image2.crop((640,0,1280,720)),(640,0))
+			if self.image2 == None:
+				tm = image.transform((1280,720), Image.PERSPECTIVE,data,  Image.BICUBIC).crop((0,0,640,720))
+			else:
+				tm = self.image2.transform((1280,720), Image.PERSPECTIVE,data,  Image.BICUBIC).crop((0,0,640,720))
+			image.paste(self.image1.crop((0,0,640,720)) if self.image1 != None else image.crop((0,0,640,720)),(0,0))
+ 			image.paste(self.image2.crop((640,0,1280,720))  if self.image2 != None else image.crop((640,0,1280,720)),(640,0))
 			image.paste(tm,(0,0), tm)
 
 

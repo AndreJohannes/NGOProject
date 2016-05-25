@@ -25,10 +25,10 @@ class zoom:
 			textMask = Phrases.getPhrase24(idx)
 			textMask2 = Image.new("L",textMask.size,"black")
 			textMask2.paste((color),(0,0),textMask)
-			image.paste("black",(50, 280),textMask2)
+			image.paste("black",(50, 265),textMask2)
 		else:
 			textMask = Phrases.getPhrase24(idx)		
-			image.paste("black",(50, 280),textMask)
+			image.paste("black",(50, 265),textMask)
 
 class zoom2:
 	def __init__(self,start):
@@ -50,9 +50,9 @@ class regions:
 		mezquital = Image.open("./images/mezquital.png")
 		huasteca = Image.open("./images/huasteca.png")
 		otomi = Image.open("./images/otomi.png")
-		self.blenders.append(Transitions.blender(hidalgo, mezquital ,start, 50)) 
-		self.blenders.append(Transitions.blender(mezquital, huasteca ,start + 50, 50))
-		self.blenders.append(Transitions.blender(huasteca, otomi ,start + 100, 50))
+		self.blenders.append(Transitions.blender(hidalgo, mezquital ,start, 25)) 
+		self.blenders.append(Transitions.blender(mezquital, huasteca ,start + 25, 25))
+		self.blenders.append(Transitions.blender(huasteca, otomi ,start + 50, 25))
 
 	def draw(self, frame, image):
 		if(frame < self.startTime or frame >= self.stopTime):
@@ -95,22 +95,22 @@ class text2:
 			textMask = Phrases.getPhrase25(idx)
 			textMask2 = Image.new("L",textMask.size,"black")
 			textMask2.paste((color),(0,0),textMask)
-			image.paste("black",(50, 280),textMask2)
+			image.paste("black",(50, 290),textMask2)
 		else:
 			textMask = Phrases.getPhrase25(idx)		
-			image.paste("black",(50, 280),textMask)
+			image.paste("black",(50, 290),textMask)
 
 
-class journey:
+class evolve:
 	def __init__(self,start):
 		self.startTime = start
-		self.stopTime = start + 660
+		self.stopTime = start + 585
 		self.zoom = zoom(start)
 		self.regions = regions(start + 240)
-		self.zoom2 = zoom2(start + 390)
-		self.areas = areas(start + 460)
-		self.textOverlap2 = text2(start + 390)
-		self.transition = Transitions.blender(Image.open("./images/huehuetla.png"), Helpers.open_image("./images/base4.png",190), start + 620, 40)
+		self.zoom2 = zoom2(start + 315)
+		self.areas = areas(start + 385)
+		self.textOverlap2 = text2(start + 315)
+		self.transition = Transitions.blender(Image.open("./images/huehuetla.png"), Helpers.open_image("./images/base4.png",190), start + 545, 40)
 
 	def draw(self, frame, image):
 		if(frame < self.startTime or frame >= self.stopTime):

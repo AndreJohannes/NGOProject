@@ -40,10 +40,10 @@ class text:
 			textMask = self.phrase(idx)
 			textMask2 = Image.new("L",textMask.size,"black")
 			textMask2.paste((color),(0,0),textMask)
-			image.paste("black",(50, 300-idx),textMask2)
+			image.paste("black",(50, int(300-1.5*idx)),textMask2)
  		else:
  			textMask = self.phrase(idx)
-			image.paste("black",(50, 300-idx),textMask)
+			image.paste("black",(50, int(300-1.5*idx)),textMask)
 
 class pullWall:
 
@@ -85,11 +85,11 @@ class handShake:
 		color = min(5*idx,190)
 		image.paste((color,color,color),(0,0),im)
 
-class inform:
+class evolve:
 
 	def __init__(self, start):
 		self.startTime = start
-		self.stopTime = start + 1350
+		self.stopTime = start + 1170
 		self.list = []
 		self.list.append(image(start, 470, Helpers.open_image("./images/base4.png",190)))
 		self.list.append(text(start, 420, 50, Phrases.getPhrase26))

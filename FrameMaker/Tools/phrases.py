@@ -14,35 +14,34 @@ class Phrases:
 
 	@staticmethod
 	def getPhrase24(i):
-		image = Image.new("L",(1150,205),"black")
+		image = Image.new("L",(1150,305),"black")
 		d = aggdraw.Draw(image)
-		font = aggdraw.Font("white", "./fonts/adler.ttf",36)
+		font = aggdraw.Font("white", "./fonts/calibrib.ttf",56)
 		text = ["Hidalgo is a small, ruggedly beautiful state in"]
-		text.append("central Mexico. There, indigenous citizens are")
-		text.append("spread among three regions in which human")
-		text.append("development levels are near the lowest in the")
-		text.append("world:")
+		text.append("central Mexico where its indigenous citizens live")
+ 		text.append("in three regions in which human development")
+		text.append("levels are near the lowest in the world:")
 		offset = 0 
 		offsetY = 0
 		for frag in text:
 			d.text((10,offsetY),frag[0:max(i-offset,0)],font)
-			offsetY += 40
+			offsetY += 60
 			offset += len(frag)
 		d.flush()
 		return image
 
 	@staticmethod
 	def getPhrase25(i):
-		image = Image.new("L",(850,95),"black")
+		image = Image.new("L",(1150,125),"black")
 		d = aggdraw.Draw(image)
-		font = aggdraw.Font("white", "./fonts/adler.ttf",36)
-		text = [u"In the Otomi-Tepehua region"]
-		text.append("sit four majority indigenous areas.")
+		font = aggdraw.Font("white", "./fonts/calibrib.ttf",56)
+		text = [u"In the Otom\u00ed-Tepehua region sit four majority"]
+		text.append("indigenous areas.")
 		offset = 0 
 		offsetY = 0
 		for frag in text:
 			d.text((10,offsetY),frag[0:max(i-offset,0)],font)
-			offsetY += 40
+			offsetY += 60
 			offset += len(frag)
 		d.flush()
 		return image	
@@ -51,8 +50,8 @@ class Phrases:
 	def getPhrase26(i):
 		image = Image.new("L",(1150,905),"black")
 		d = aggdraw.Draw(image)
-		font = aggdraw.Font("white", "./fonts/adler.ttf",36)
-		text = ["-For centuries the indigenous people have been"]
+		font = aggdraw.Font("white", "./fonts/calibrib.ttf",56)
+		text = ["-For centuries, indigenous people are"]
 		text.append(" separated by walls, dividing community from")
 		text.append(" community and the Region from the world.")
 		text.append("             ")
@@ -64,13 +63,12 @@ class Phrases:
 		text.append("-Communities rarely collaborate, municipalities")
 		text.append(" even less.")
 		text.append("             ")
-		text.append("-Women average four grades of schooling")
-		text.append(" and are not supported as leaders.")
+		text.append("-Women average three grades of schooling.")
 		offset = 0 
 		offsetY = 0
 		for frag in text:
 			d.text((10,offsetY),frag[0:max(i-offset,0)],font)
-			offsetY += 40
+			offsetY += 60
 			offset += len(frag)
 		d.flush()
 		return image
@@ -79,37 +77,36 @@ class Phrases:
 	def getPhrase27(i):
 		image = Image.new("L",(1150,770),"black")
 		d = aggdraw.Draw(image)
-		font = aggdraw.Font("white", "./fonts/adler.ttf",36)
-		text = ["-Since 2013, Nahua, Otomi and Tepehua citizens"]
-		text.append(" have defied the walls and build their own bottom-")
-		text.append(" up rights-based movement.")
+		font = aggdraw.Font("white", "./fonts/calibrib.ttf",56)
+		text = [u"-Since 2013, Nahua, Otom\u00ed and Tepehua citizens"]
+		text.append(" defy the walls and build their own bottom-up")
+		text.append(" rights-based movement.")
 		text.append("             ")
-		text.append("-In partnership with the Mexican NGO PSYDEH, in")
-		text.append(" 2014 and 2015, a network of 500+ indigenous women")
-		text.append(" from 35+ communities planted innovative seeds for")
-		text.append(" their sustainable future.")
+		text.append("-In partnership with the Mexican NGO PSYDEH,")
+		text.append(" in 2014 and 2015, a network of 500+ indigenous")
+		text.append(" women from 35+ communities planted")
+		text.append(" innovative seeds for their sustainable future.")
 		offset = 0 
 		offsetY = 0
 		for frag in text:
 			d.text((10,offsetY),frag[0:max(i-offset,0)],font)
-			offsetY += 40
+			offsetY += 60
 			offset += len(frag)
 		d.flush()
 		return image	
 
 	@staticmethod
 	def getPhrase28(i):
-		image = Image.new("L",(1150,605),"black")
+		image = Image.new("L",(1150,805),"black")
 		d = aggdraw.Draw(image)
-		font = aggdraw.Font("white", "./fonts/adler.ttf",36)
+		font = aggdraw.Font("white", "./fonts/calibrib.ttf",56)
 		text = ["These seeds = learning about: "]
 		text.append("             ")
 		text.append("   - shared problems")
 		text.append("             ")
 		text.append("   - clarity on solutions")
 		text.append("             ")
-		text.append("   - leader disciplines to implement")
-		text.append("     solutions")
+		text.append("   - leader disciplines to implement solutions")
 		text.append("             ")
 		text.append("   - rights & laws on which solutions are based")
 		text.append("             ")		
@@ -119,7 +116,7 @@ class Phrases:
 		offsetY = 0
 		for frag in text:
 			d.text((10,offsetY),frag[0:max(i-offset,0)],font)
-			offsetY += 40
+			offsetY += 60
 			offset += len(frag)
 		d.flush()
 		return image
@@ -128,14 +125,14 @@ class Phrases:
 	def getPhrase29(i):
 		image = Image.new("L",(1150,205),"black")
 		d = aggdraw.Draw(image)
-		font = aggdraw.Font("white", "./fonts/adler.ttf",36)
-		text = ["Where walls once existed, seeds have been planted"]
+		font = aggdraw.Font("white", "./fonts/calibrib.ttf",56)
+		text = ["Where walls once existed, seeds are planted"]
 		text.append("and a tree grows.")
 		offset = 0 
 		offsetY = 0
 		for frag in text:
 			d.text((10,offsetY),frag[0:max(i-offset,0)],font)
-			offsetY += 40
+			offsetY += 60
 			offset += len(frag)
 		d.flush()
 		return image
@@ -144,14 +141,14 @@ class Phrases:
 	def getPhrase30(i):
 		image = Image.new("L",(1150,205),"black")
 		d = aggdraw.Draw(image)
-		font = aggdraw.Font("white", "./fonts/adler.ttf",36)
-		text = ["This tree, our metaphor for sustainability"]
+		font = aggdraw.Font("white", "./fonts/calibrib.ttf",56)
+		text = ["This tree, our metaphor for sustainability,"]
 		text.append("symbolizes our work.")
 		offset = 0 
 		offsetY = 0
 		for frag in text:
 			d.text((10,offsetY),frag[0:max(i-offset,0)],font)
-			offsetY += 40
+			offsetY += 60
 			offset += len(frag)
 		d.flush()
 		return image	
@@ -160,13 +157,14 @@ class Phrases:
 	def getPhrase31(i):
 		image = Image.new("L",(1150,205),"black")
 		d = aggdraw.Draw(image)
-		font = aggdraw.Font("white", "./fonts/adler.ttf",36)
+		font = aggdraw.Font("white", "./fonts/calibrib.ttf",56)
+		#text = ["[This scene needs work.....]"]
 		text = ["As our tree grows, it buds new life:"]
 		offset = 0 
 		offsetY = 0
 		for frag in text:
 			d.text((10,offsetY),frag[0:max(i-offset,0)],font)
-			offsetY += 40
+			offsetY += 60
 			offset += len(frag)
 		d.flush()
 		return image
@@ -246,7 +244,7 @@ class Phrases:
 	def getPhrase36(i):
 		image = Image.new("L",(570,405),"black")
 		d = aggdraw.Draw(image)
-		font = aggdraw.Font("white", "./fonts/adler.ttf",36)
+		font = aggdraw.Font("white", "./fonts/calibri.ttf", 46)
 		text = ["In just 1.5 years, "]
 		text.append("the Region's")
 		text.append("indigenous women")
@@ -259,7 +257,7 @@ class Phrases:
 		offsetY = 0
 		for frag in text:
 			d.text((10,offsetY),frag[0:max(i-offset,0)],font)
-			offsetY += 40
+			offsetY += 46
 			offset += len(frag)
 		d.flush()
 		return image
@@ -268,14 +266,15 @@ class Phrases:
 	def getPhrase46(i):
 		image = Image.new("L",(1150,405),"black")
 		d = aggdraw.Draw(image)
-		font = aggdraw.Font("white", "./fonts/adler.ttf",36)
-		text = ["Still, as of May 2016, our tree is not strong enough"]
-		text.append("to bear fruit. The foundation remains weak.")
+		font = aggdraw.Font("white", "./fonts/calibrib.ttf",56)
+		text = ["Still, as of May 2016, our tree is not strong"]
+		text.append("enough to bear fruit. The foundation remains")
+		text.append("weak.")
 		offset = 0 
 		offsetY = 0
 		for frag in text:
 			d.text((10,offsetY),frag[0:max(i-offset,0)],font)
-			offsetY += 40
+			offsetY += 60
 			offset += len(frag)
 		d.flush()
 		return image
@@ -285,18 +284,17 @@ class Phrases:
 	def getPhrase47(i):
 		image = Image.new("L",(1150,605),"black")
 		d = aggdraw.Draw(image)
-		font = aggdraw.Font("white", "./fonts/adler.ttf",36)
-		text = ["-Help us build our globally scalable model"]
-		text.append(" for driving bottom-up sustainable development.")
+		font = aggdraw.Font("white", "./fonts/calibri.ttf",46)
+		text = ["-Help us drive bottom-up sustainable development."]
 		text.append("             ")
 		text.append("-Team up with these women leaders and PSYDEH")
-		text.append(" by supporting our first ever Crowdfunding")
-		text.append(" campaign.")
+		text.append(" by supporting our first ever Crowdfunding campaign.")
+		#text.append(" ")
 		offset = 0 
 		offsetY = 0
 		for frag in text:
 			d.text((10,offsetY),frag[0:max(i-offset,0)],font)
-			offsetY += 40
+			offsetY += 50
 			offset += len(frag)
 		d.flush()
 		return image				
@@ -305,7 +303,7 @@ class Phrases:
 	def getPhrase48(i):
 		image = Image.new("L",(1150,605),"black")
 		d = aggdraw.Draw(image)
-		font = aggdraw.Font("white", "adler.ttf",36)
+		font = aggdraw.Font("white", "calibri.ttf",46)
 		text = ["While we pursue Mexican federal"]
 		text.append("government aid, in-country politics")
 		text.append("and economics tell us to reach out")
@@ -317,7 +315,7 @@ class Phrases:
 		offsetY = 0
 		for frag in text:
 			d.text((10,offsetY),frag[0:max(i-offset,0)],font)
-			offsetY += 40
+			offsetY += 50
 			offset += len(frag)
 		d.flush()
 		return image			
@@ -326,15 +324,15 @@ class Phrases:
 	def getPhrase49(i):
 		image = Image.new("L",(1150,605),"black")
 		d = aggdraw.Draw(image)
-		font = aggdraw.Font("white", "./fonts/adler.ttf",36)
+		font = aggdraw.Font("white", "./fonts/calibri.ttf",46)
 		text = ["Our Campaign goal is $15,000usd."]
-		text.append("This money will produce 3 critically")
-		text.append("important initiatives.")
+		text.append("     ")
+		text.append("This money will produce 4 projects.")
 		offset = 0 
 		offsetY = 0
 		for frag in text:
 			d.text((10,offsetY),frag[0:max(i-offset,0)],font)
-			offsetY += 40
+			offsetY += 50
 			offset += len(frag)
 		d.flush()
 		return image			
@@ -344,14 +342,14 @@ class Phrases:
 	def getPhrase50(i):
 		image = Image.new("L",(1150,605),"black")
 		d = aggdraw.Draw(image)
-		font = aggdraw.Font("white", "./fonts/adler.ttf",36)
+		font = aggdraw.Font("white", "./fonts/calibri.ttf",46)
 		text = ["Conference linking Hidalgo's"]
 		text.append("indigenous women leaders")
 		offset = 0 
 		offsetY = 0
 		for frag in text:
 			d.text((10,offsetY),frag[0:max(i-offset,0)],font)
-			offsetY += 40
+			offsetY += 50
 			offset += len(frag)
 		d.flush()
 		return image	
@@ -361,14 +359,14 @@ class Phrases:
 	def getPhrase51(i):
 		image = Image.new("L",(1150,605),"black")
 		d = aggdraw.Draw(image)
-		font = aggdraw.Font("white", "./fonts/adler.ttf",36)
+		font = aggdraw.Font("white", "./fonts/calibri.ttf",46)
 		text = ["Training program for the Regional"]
 		text.append("Cooperative of Indigenous Artisans.")
 		offset = 0 
 		offsetY = 0
 		for frag in text:
 			d.text((10,offsetY),frag[0:max(i-offset,0)],font)
-			offsetY += 40
+			offsetY += 50
 			offset += len(frag)
 		d.flush()
 		return image	
@@ -377,14 +375,14 @@ class Phrases:
 	def getPhrase52(i):
 		image = Image.new("L",(1150,605),"black")
 		d = aggdraw.Draw(image)
-		font = aggdraw.Font("white", "./fonts/adler.ttf",36)
+		font = aggdraw.Font("white", "./fonts/calibri.ttf",46)
 		text = ["Narrative development program"]
 		text.append("for the Network's women leaders.")
 		offset = 0 
 		offsetY = 0
 		for frag in text:
 			d.text((10,offsetY),frag[0:max(i-offset,0)],font)
-			offsetY += 40
+			offsetY += 50
 			offset += len(frag)
 		d.flush()
 		return image
@@ -393,7 +391,7 @@ class Phrases:
 	def getPhrase53(i):
 		image = Image.new("L",(910,570),"black")
 		d = aggdraw.Draw(image)
-		font = aggdraw.Font("white", "./fonts/adler.ttf",36)
+		font = aggdraw.Font("white", "./fonts/calibrib.ttf",46)
 		text = ["PSYDEH:"]
 		text.append("At the table with our rural and")
 		text.append("indigenous partners in Mexico.")
@@ -401,7 +399,7 @@ class Phrases:
 		offsetY = 0
 		for frag in text:
 			d.text((10,offsetY),frag[0:max(i-offset,0)],font)
-			offsetY += 40
+			offsetY += 50
 			offset += len(frag)
 		d.flush()
 		return image
@@ -411,7 +409,7 @@ class Phrases:
 	def getPhrase54(i):
 		image = Image.new("L",(790,160),"black")
 		d = aggdraw.Draw(image)
-		font = aggdraw.Font("white", "./fonts/adler.ttf",40)
+		font = aggdraw.Font("white", "./fonts/calibrib.ttf",46)
 		text = []
 		text.append("Visit PSYDEH's website for more")
 		text.append("information: www.psydeh.com")
@@ -419,7 +417,29 @@ class Phrases:
 		offsetY = 0
 		for frag in text:
 			d.text((10,offsetY),frag[0:max(i-offset,0)],font)
-			offsetY += 40
+			offsetY += 50
+			offset += len(frag)
+		d.flush()		
+		return image
+
+	@staticmethod
+	def getPhrase55(i):
+		image = Image.new("L",(1150,860),"black")
+		d = aggdraw.Draw(image)
+		font = aggdraw.Font("white", "./fonts/calibrib.ttf",56)
+		text = []
+		text.append("-Join us in breaking down walls.")
+		text.append("             ")
+		text.append("-Support these three initiatives.")
+		text.append("             ")
+		text.append("-Help us grow our tree.")
+		text.append("             ")
+		text.append("-Global citizens thrive in informed collaboration!")
+		offset = 0 
+		offsetY = 0
+		for frag in text:
+			d.text((10,offsetY),frag[0:max(i-offset,0)],font)
+			offsetY += 60
 			offset += len(frag)
 		d.flush()		
 		return image
