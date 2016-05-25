@@ -219,6 +219,7 @@ class evolve:
 		self.list.append(emoticon(start + 230))
 		self.list.append(animation3D(start + 430))
 		self.list.append(zoom(start + 330))
+		self.list.append(Transitions.blender(None, Image.open("./images/base2.png"), start + 670, 20))
 		self.list.append(OneThought(start, 500, True))
 		self.list.append(Transitions.blender(None, Image.open("./images/base13b.png"), start + 420, 10))
 		self.list.append(text(start + 50, 190, 50, Phrases.getPhrase47, (110, 240)))
@@ -229,7 +230,7 @@ class evolve:
 		self.list.append(leafText(start + 515, 75, Phrases.getPhrase51, (300, 300)))
 		self.list.append(leaf(start + 430, start + 590, 400, Image.open("./images/leaf3.png")))
 		self.list.append(leafText(start + 595, 75, Phrases.getPhrase52, (300, 400)))
-		self.list.append(Transitions.blender(None, Image.open("./images/base14.png"), start + 670, 20))
+		#self.list.append(Transitions.blender(None, Image.open("./images/base14.png"), start + 670, 20))
 
 	def draw(self, frame, image):
 		if(frame < self.startTime or frame >= self.stopTime):

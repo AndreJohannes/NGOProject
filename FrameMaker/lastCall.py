@@ -7,7 +7,7 @@ class still:
 	def __init__(self, start):
 		self.startTime = start
 		self.stopTime = start + 200
-		self.image = Image.open("./images/base14.png")
+		self.image = Image.open("./images/base2.png")
 	
 	def draw(self, frame, image):
 		if(frame < self.startTime or frame >= self.stopTime):
