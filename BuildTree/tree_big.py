@@ -23,12 +23,12 @@ def paint_leaves(parent, offset, im):
 	for node in parent.children:
 		if node.has_leave:
 			d = aggdraw.Draw(im)
-			for i in range(0,36):
+			for i in range(0,66):
 				color = (random.randint(40,180), random.randint(120,250), random.randint(0,50))
 				p = aggdraw.Pen(color, 1)
 				b = aggdraw.Brush(color,255)
-				dx = random.randint(-2*int(node.leave_size), 2*int(node.leave_size))
-				dy = random.randint(-2*int(node.leave_size), 2*int(node.leave_size))
+				dx = random.randint(-3*int(node.leave_size), 3*int(node.leave_size))
+				dy = random.randint(-3*int(node.leave_size), 3*int(node.leave_size))
 				d.ellipse((dx+349+1.3*node._absolut_position[0]-5,dy+96+1.3*node._absolut_position[1]-5,
 					dx+349+1.3*node._absolut_position[0]+5,dy+96+1.3*node._absolut_position[1]+5),p,b)
 			d.flush()

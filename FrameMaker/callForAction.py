@@ -46,7 +46,7 @@ class emoticon:
 		else:
 			canvas.ellipse((17 - 12, 35 - 12, 17 + 12, 35 + 12), pen, brush)
 		pen = aggdraw.Pen("black", 1)
-		brush = aggdraw.Brush((248, 249, 118), 255)
+		brush = aggdraw.Brush((240, 240, 240), 255)
 		if idx > 70:
 			lev = 44 * math.sin(max(0, 5 - (idx - 70)) / 3.)
 		else:
@@ -65,6 +65,7 @@ class emoticon:
 		if idx <= 70:
 			return
 		im = Image.open("./emoticon/smile.png")
+		image.paste("white", (620, 435, 810, 485))
 		image.paste(im, (0, 0), im)	
 
 class animation3D:
@@ -162,10 +163,11 @@ class text:
 			textMask = self.phrase(idx)
 			textMask2 = Image.new("L", textMask.size, "black")
 			textMask2.paste((color), (0, 0), textMask)
-			image.paste("black", self.position, textMask2)
+			image.paste("black", (640 - textMask2.size[0] / 2, self.position[1]), textMask2)
 		else:
 			textMask = self.phrase(idx)
-			image.paste("black", self.position, textMask)
+			image.paste("black", (640 - textMask.size[0] / 2, self.position[1]), textMask)
+
 
 class leafText:
 	def __init__(self, start, fading, phrase, position):
@@ -219,18 +221,26 @@ class evolve:
 		self.list.append(emoticon(start + 230))
 		self.list.append(animation3D(start + 430))
 		self.list.append(zoom(start + 330))
-		self.list.append(Transitions.blender(None, Image.open("./images/base2.png"), start + 670, 20))
+		self.list.append(Transitions.blender(None, Image.open("./images/base14.png"), start + 670, 20))
 		self.list.append(OneThought(start, 500, True))
 		self.list.append(Transitions.blender(None, Image.open("./images/base13b.png"), start + 420, 10))
-		self.list.append(text(start + 50, 190, 50, Phrases.getPhrase47, (110, 240)))
-		self.list.append(text(start + 290, 90, 50, Phrases.getPhrase49, (250, 280)))
+		font = aggdraw.Font("white", "./fonts/calibri.ttf", 46)
+		list_of_text = ["Help us drive bottom-up sustainable development.",
+			"             ",
+			"Team up with these women leaders and PSYDEH",
+			"by supporting our first ever Crowdfunding campaign."]
+		self.list.append(text(start + 50, 190, 50, Phrases().makeImage_centered_runnable(list_of_text, font), (110, 240)))
+		list_of_text = ["Our Campaign goal is $15,000usd.",
+			"     ",
+			"This money will produce 4 projects."]
+		self.list.append(text(start + 290, 90, 50, Phrases().makeImage_centered_runnable(list_of_text, font), (250, 280)))
 		self.list.append(leaf(start + 430, start + 440, 200, Image.open("./images/leaf1.png")))
 		self.list.append(leafText(start + 445, 75, Phrases.getPhrase50, (300, 200)))
 		self.list.append(leaf(start + 430, start + 510, 300, Image.open("./images/leaf2.png")))
 		self.list.append(leafText(start + 515, 75, Phrases.getPhrase51, (300, 300)))
 		self.list.append(leaf(start + 430, start + 590, 400, Image.open("./images/leaf3.png")))
 		self.list.append(leafText(start + 595, 75, Phrases.getPhrase52, (300, 400)))
-		#self.list.append(Transitions.blender(None, Image.open("./images/base14.png"), start + 670, 20))
+		# self.list.append(Transitions.blender(None, Image.open("./images/base14.png"), start + 670, 20))
 
 	def draw(self, frame, image):
 		if(frame < self.startTime or frame >= self.stopTime):

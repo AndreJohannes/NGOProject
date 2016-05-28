@@ -1,17 +1,12 @@
 from PIL import Image
-from PIL import ImageDraw
 import aggdraw
 import math
-import random
-from Tools.phrases import Phrases
-from Tools.flags import Flags
-import Tools.tools as Tools
-import Tools.transitions as Transitions
 import Tools.helpers as Helpers
 import animation3D.perspective as Perspective
 import animation3D.svgparser as SVGParser
 
 class walker:
+
 	def __init__(self):
 		self.image = Image.open("./animation3D/walker/analy/frame{}.png".format(0)).convert("RGBA")
 

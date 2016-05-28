@@ -40,10 +40,10 @@ class text:
 			textMask = self.phrase(idx)
 			textMask2 = Image.new("L",textMask.size,"black")
 			textMask2.paste((color),(0,0),textMask)
-			image.paste("black",(50, int(300-1.5*idx)),textMask2)
+			image.paste("black",(65, int(300-1.5*idx)),textMask2)
  		else:
  			textMask = self.phrase(idx)
-			image.paste("black",(50, int(300-1.5*idx)),textMask)
+			image.paste("black",(65, int(300-1.5*idx)),textMask)
 
 class pullWall:
 

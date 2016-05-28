@@ -12,6 +12,7 @@ class bezier:
 		self.data = data
 
 	def draw(self, image):
+		':type image: Image.Image' 
 		[x1, x2, xc] = self.data
 		coords = []
 		res = 50
