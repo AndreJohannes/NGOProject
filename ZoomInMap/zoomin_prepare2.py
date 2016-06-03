@@ -3,13 +3,12 @@ import math
 from PIL import Image
 
 start = [530, 170, 660, 240]
-end = [590,190, 640, 220]
-
+end = [590, 190, 640, 220]
 
 iOffset = 390
 
 # for i in range(0,70):
-	
+
 # 	k = 1- math.sin(math.pi *i/(2*69.))
 
 # 	x1 =k* start[0] + (1-k) *end[0]
@@ -43,30 +42,30 @@ iOffset = 390
 
 
 
-args = ["inkscape", "Acaxochitlan.svg", 
-		"--export-png=./acaxochitlan.png",
-		"--export-area={}:{}:{}:{}".format(590,190, 640, 220),"-w=1280", "-h=720",
-		"--export-background-opacity=255"]
-	#print "save image", str(i)	
+args = ["inkscape", "Acaxochitlan.svg",
+        "--export-png=./acaxochitlan.png",
+        "--export-area={}:{}:{}:{}".format(590, 190, 640, 220), "-w=1280", "-h=720",
+        "--export-background-opacity=255"]
+# print "save image", str(i)
 call(args)
 
-args = ["inkscape", "Tenango.svg", 
-		"--export-png=./tenango.png",
-		"--export-area={}:{}:{}:{}".format(590,190, 640, 220),"-w=1280", "-h=720",
-		"--export-background-opacity=255"]
-	#print "save image", str(i)	
+args = ["inkscape", "Tenango.svg",
+        "--export-png=./tenango.png",
+        "--export-area={}:{}:{}:{}".format(590, 190, 640, 220), "-w=1280", "-h=720",
+        "--export-background-opacity=255"]
+# print "save image", str(i)
 call(args)
 
-args = ["inkscape", "Bartolo.svg", 
-		"--export-png=./bartolo.png",
-		"--export-area={}:{}:{}:{}".format(590,190, 640, 220),"-w=1280", "-h=720",
-		"--export-background-opacity=255"]
-	#print "save image", str(i)	
+args = ["inkscape", "Bartolo.svg",
+        "--export-png=./bartolo.png",
+        "--export-area={}:{}:{}:{}".format(590, 190, 640, 220), "-w=1280", "-h=720",
+        "--export-background-opacity=255"]
+# print "save image", str(i)
 call(args)
 
-args = ["inkscape", "Huehuetla.svg", 
-		"--export-png=./huehuetla.png",
-		"--export-area={}:{}:{}:{}".format(590,190, 640, 220),"-w=1280", "-h=720",
-		"--export-background-opacity=255"]
-	#print "save image", str(i)	
+args = ["inkscape", "Huehuetla.svg",
+        "--export-png=./huehuetla.png",
+        "--export-area={}:{}:{}:{}".format(590, 190, 640, 220), "-w=1280", "-h=720",
+        "--export-background-opacity=255"]
+# print "save image", str(i)
 call(args)

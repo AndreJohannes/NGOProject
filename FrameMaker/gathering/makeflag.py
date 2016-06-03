@@ -4,6 +4,7 @@ Created on 26/05/2016
 @author: andre
 '''
 import sys
+
 sys.path
 sys.path.append('../Tools')
 import helpers  # @UnresolvedImport
@@ -11,8 +12,8 @@ import Image
 import math
 import random
 
+
 class Flags:
-    
     american = Image.open("../Flags/america.png").resize((910, 580), Image.ANTIALIAS)
     australia = Image.open("../Flags/australia.png").resize((910, 580), Image.ANTIALIAS)
     mexico = Image.open("../Flags/mexican.png").resize((910, 580), Image.ANTIALIAS)
@@ -42,7 +43,7 @@ for flag in Flags.list_of_flags:
     dz = 910 * math.sin(rad)
     C = 5000
     dx = 910 * math.cos(rad) * C / (C + dz)
-    dy = 580 * C / (C + dz) 
+    dy = 580 * C / (C + dz)
 
     rec2 = [[0, 0], [flag.size[0], 0], [flag.size[0], flag.size[1]], [0, flag.size[1]]]
     if dy > 580:
